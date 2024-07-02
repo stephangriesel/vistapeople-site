@@ -1,0 +1,233 @@
+---
+import Head from '../components/Head.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../config';
+
+let { title } = SITE;
+let description = 'Custom-made designs made simple';
+let permalink = 'https://chipchop.nl/';
+---
+
+<html lang="en">
+  <head>
+    <Head {title} {description} {permalink} />
+  </head>
+
+  <body>
+    <div class="ml-[auto] mr-[auto] w-full max-w-[65em] pl-[2rem] pr-[2rem]">
+      <Nav />
+    </div>
+    <div class="ml-[auto] mr-[auto] w-full max-w-[65em] pl-[2rem] pr-[2rem]">
+      <main>
+        <section class="bg-white dark:bg-gray-900">
+          <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
+            <h1
+              class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white font-pathway-gothic-one animation"
+            >
+              CORE VALUES
+            </h1>
+            <p
+              class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400 animation"
+            >
+              <strong>HOW WE CREATE REAL VALUE</strong> - While creating your
+              valuable products, we always stick to our core values in a pretty
+              hardcore fashion.
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+    <section class="w-full h-screen">
+      <img
+        src="https://res.cloudinary.com/chipchop/image/upload/w_1200,c_scale/v1690864141/static/about/core1.jpg"
+        class="object-cover w-full h-full animation"
+        alt="Wood Work"
+      />
+    </section>
+    <div class="ml-[auto] mr-[auto] w-full max-w-[65em] pl-[2rem] pr-[2rem]">
+      <main>
+        <section class="bg-white dark:bg-gray-900">
+          <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
+            <ol class="relative border-l border-gray-200 dark:border-gray-700">
+              <li class="mb-10 ml-4">
+                <div
+                  class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"
+                >
+                </div>
+                <div class="flex justify-center">
+                  <div
+                    class="flex items-center content-center align-center text-gray-500 dark:text-gray-400 font-bold text-2xl justify-center w-72 h-14 bg-[#ebccca] rounded-md mb-5 mt-5 animation"
+                  >
+                    HIGH QUALITY
+                  </div>
+                </div>
+                <p
+                  class="mb-4 text-base font-normal text-xl text-gray-500 dark:text-gray-400 animation"
+                >
+                  Everything we make, is built to last, even with intensive
+                  daily use.
+                </p>
+              </li>
+              <li class="mb-10 ml-4">
+                <div
+                  class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"
+                >
+                </div>
+                <div class="flex justify-center">
+                  <div
+                    class="flex items-center content-center align-center text-gray-500 dark:text-gray-400 font-bold text-2xl justify-center w-72 h-14 bg-[#ebccca] rounded-md mb-5 mt-5 animation"
+                  >
+                    GOOD DESIGN
+                  </div>
+                </div>
+                <p
+                  class="mb-4 text-base font-normal text-xl text-gray-500 dark:text-gray-400 animation"
+                >
+                  Our designs are always pleasing to look at, easy to get and
+                  intuitive to use.
+                </p>
+              </li>
+              <li class="mb-10 ml-4">
+                <div
+                  class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"
+                >
+                </div>
+                <div class="flex justify-center">
+                  <div
+                    class="flex items-center content-center align-center text-gray-500 dark:text-gray-400 font-bold text-2xl justify-center w-72 h-14 bg-[#ebccca] rounded-md mb-5 mt-5 animation"
+                  >
+                    CUSTOMER SERVICE
+                  </div>
+                </div>
+                <p
+                  class="mb-4 text-base font-normal text-xl text-gray-500 dark:text-gray-400 animation"
+                >
+                  We are on a journey to make customers happy with custom-made
+                  happiness.
+                </p>
+              </li>
+              <li class="mb-10 ml-4">
+                <div
+                  class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"
+                >
+                </div>
+                <div class="flex justify-center">
+                  <div
+                    class="flex items-center content-center align-center text-gray-500 dark:text-gray-400 font-bold text-2xl justify-center w-72 h-14 bg-[#ebccca] rounded-md mb-5 mt-5 animation"
+                  >
+                    BIG FUN
+                  </div>
+                </div>
+                <p
+                  class="mb-4 text-base font-normal text-xl text-gray-500 dark:text-gray-400 animation"
+                >
+                  When crafting our products, we put the 'fun' back into
+                  'functionality'.
+                </p>
+              </li>
+              <li class="mb-10 ml-4">
+                <div
+                  class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"
+                >
+                </div>
+                <div class="flex justify-center">
+                  <div
+                    class="flex items-center content-center align-center text-gray-500 dark:text-gray-400 font-bold text-2xl justify-center w-72 h-14 bg-[#ebccca] rounded-md mb-5 mt-5 animation"
+                  >
+                    EPIC SUSTAINABILITY
+                  </div>
+                </div>
+                <p
+                  class="mb-4 text-base font-normal text-xl text-gray-500 dark:text-gray-400 animation"
+                >
+                  Our materials are ethically sourced and our output is epically
+                  durable
+                </p>
+              </li>
+            </ol>
+          </div>
+        </section>
+      </main>
+    </div>
+    <section class="w-full h-2/4">
+      <img
+        src="https://res.cloudinary.com/chipchop/image/upload/w_1200,c_scale/v1693889060/static/about/core2.jpg"
+        class="object-cover w-full h-96 md:h-[40rem] animation"
+        alt="Wood Work"
+      />
+    </section>
+    <div class="ml-[auto] mr-[auto] w-full max-w-[65em] pl-[2rem] pr-[2rem]">
+      <main>
+        <section class="bg-white dark:bg-gray-900">
+          <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
+            <p
+              class="text-xl font-normal text-gray-500 lg:text-2xl sm:px-16 lg:px-48 dark:text-gray-400 animation"
+            >
+              Are you ready to start this journey?
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+    <div
+      class="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4 animation"
+    >
+      <a
+        href="/contact"
+        class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white hover:text-black rounded-lg bg-[#4b5b5a] hover:bg-[#ebccca] focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
+      >
+        Contact Us
+        <svg
+          class="w-3.5 h-3.5 ml-2"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 14 10"
+        >
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M1 5h12m0 0L9 1m4 4L9 9"></path>
+        </svg>
+      </a>
+    </div>
+    <Footer />
+    <style>
+      .animation {
+        opacity: 0;
+        transition: all 0.7s ease-out;
+        transition-delay: 0.4s;
+      }
+
+      .scroll-animation {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    </style>
+    <script>
+      const the_animation = document.querySelectorAll('.animation');
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('scroll-animation');
+            } else {
+              entry.target.classList.remove('scroll-animation');
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+      //
+      for (let i = 0; i < the_animation.length; i++) {
+        const elements = the_animation[i];
+
+        observer.observe(elements);
+      }
+    </script>
+  </body>
+</html>
