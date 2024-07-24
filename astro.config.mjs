@@ -67,6 +67,36 @@ export default defineConfig({
               },
             ],
           },
+          {
+            name: "accommodation",
+            label: "Accommodation",
+            label_singular: "Accommodation",
+            folder: "src/pages/content/accommodation",
+            create: true,
+            delete: true,
+            fields: [
+              { name: "title", widget: "string", label: "Post Title" },
+              {
+                name: "description",
+                widget: "string",
+                label: "Description",
+                required: true,
+              },
+              { name: "tag", widget: "string", label: "Tag", required: true },
+              { name: "body", widget: "markdown", label: "Post Body" },
+              {
+                name: "layout",
+                widget: "select",
+                default: "../../layouts/GalleryPost.astro",
+                options: [
+                  {
+                    label: "Gallery Post",
+                    value: "../../layouts/GalleryPost.astro",
+                  },
+                ],
+              },
+            ],
+          },
         ],
       },
     }),
