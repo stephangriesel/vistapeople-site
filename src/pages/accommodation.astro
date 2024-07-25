@@ -4,9 +4,20 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import { SITE } from "../config";
 
+import AccommodationIntro from "../components/AccommodationIntro.astro";
+
 let { title } = SITE;
 let description = "Custom-made designs made simple";
 let permalink = "https://chipchop.nl/";
+
+let allAccommodation = await Astro.glob("./content/accommodation/*.md");
+allAccommodation = allAccommodation.sort(
+  (a, b) =>
+    new Date(b.frontmatter.publishDate).valueOf() -
+    new Date(a.frontmatter.publishDate).valueOf()
+);
+
+console.log("check accommodation", allAccommodation);
 ---
 
 <html lang="en">
@@ -18,24 +29,12 @@ let permalink = "https://chipchop.nl/";
     <div class="ml-[auto] mr-[auto] w-full max-w-[65em] pl-[2rem] pr-[2rem]">
       <Nav />
     </div>
-    <div class="ml-[auto] mr-[auto] w-full max-w-[65em] pl-[2rem] pr-[2rem]">
+    <div class="justify-center w-full">
       <main>
         <section class="bg-white dark:bg-gray-900">
-          <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
-            <h1
-              class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white font-pathway-gothic-one animation"
-            >
-              ACCOMODATION
-            </h1>
-            <p
-              class="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-400 animation"
-            >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
-              tempora fuga maxime facere laboriosam quo reprehenderit debitis
-              incidunt eveniet optio? Necessitatibus iusto consequuntur mollitia
-              at, magnam est! Unde, soluta quia.
-            </p>
-          </div>
+          <section class="mt-10">
+            {allAccommodation.map((p) => <AccommodationIntro post={p} />)}
+          </section>
         </section>
       </main>
     </div>
