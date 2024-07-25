@@ -69,7 +69,7 @@ export default defineConfig({
           },
           {
             name: "accommodation",
-            label: "Accommodation",
+            label: "Accommodation Intro",
             label_singular: "Accommodation",
             folder: "src/pages/content/accommodation",
             create: true,
