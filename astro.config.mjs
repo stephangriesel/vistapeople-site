@@ -87,11 +87,44 @@ export default defineConfig({
               {
                 name: "layout",
                 widget: "select",
-                default: "../../layouts/GalleryPost.astro",
+                default: "../../../layouts/GalleryPost.astro",
                 options: [
                   {
                     label: "Gallery Post",
-                    value: "../../layouts/GalleryPost.astro",
+                    value: "../../../layouts/GalleryPost.astro",
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            name: "navigationbar",
+            label: "Navigation Bar",
+            label_singular: "Navigation Bar",
+            folder: "src/pages/content/navigationbar",
+            create: true,
+            delete: true,
+            fields: [
+              {
+                name: "logo",
+                widget: "image",
+                label: "Logo",
+                choose_url: true,
+                default: "",
+                required: false,
+              },
+              { name: "menuitem1", widget: "string", label: "Menu Item 1" },
+              { name: "menuitem2", widget: "string", label: "Menu Item 2" },
+              { name: "menuitem3", widget: "string", label: "Menu Item 3" },
+              { name: "menuitem4", widget: "string", label: "Menu Item 4" },
+              {
+                name: "layout",
+                widget: "select",
+                default: "../../../layouts/General.astro",
+                options: [
+                  {
+                    label: "General",
+                    value: "../../../layouts/General.astro",
                   },
                 ],
               },
