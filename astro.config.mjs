@@ -105,6 +105,7 @@ export default defineConfig({
             create: true,
             delete: true,
             fields: [
+              { name: "title", widget: "string", label: "Title" },
               {
                 name: "logo",
                 widget: "image",
@@ -114,9 +115,13 @@ export default defineConfig({
                 required: false,
               },
               { name: "menuitem1", widget: "string", label: "Menu Item 1" },
+              { name: "menuitem1url", widget: "string", label: "Url" },
               { name: "menuitem2", widget: "string", label: "Menu Item 2" },
+              { name: "menuitem2url", widget: "string", label: "Url" },
               { name: "menuitem3", widget: "string", label: "Menu Item 3" },
+              { name: "menuitem3url", widget: "string", label: "Url" },
               { name: "menuitem4", widget: "string", label: "Menu Item 4" },
+              { name: "menuitem4url", widget: "string", label: "Url" },
               {
                 name: "layout",
                 widget: "select",
