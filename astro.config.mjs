@@ -112,7 +112,6 @@ export default defineConfig({
                 label: "Description",
                 required: true,
               },
-              { name: "tag", widget: "string", label: "Tag", required: true },
               { name: "body", widget: "markdown", label: "Post Body" },
               {
                 name: "layout",
