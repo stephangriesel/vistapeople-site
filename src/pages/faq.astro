@@ -4,6 +4,7 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import { SITE } from "../config";
 import FaqIntro from "../components/FaqIntro.astro";
+import FaqEntry from "../components/FaqEntry.astro";
 
 let { title } = SITE;
 let description = "Custom-made designs made simple";
@@ -24,6 +25,15 @@ allNavBar = allNavBar.sort(
     new Date(b.frontmatter.publishDate).valueOf() -
     new Date(a.frontmatter.publishDate).valueOf()
 );
+
+let allFaqEntry = await Astro.glob("./content/faqentry/*.md");
+allFaqEntry = allFaqEntry.sort(
+  (a, b) =>
+    new Date(b.frontmatter.publishDate).valueOf() -
+    new Date(a.frontmatter.publishDate).valueOf()
+);
+
+console.log("check accommodation", allFaqEntry);
 ---
 
 <html lang="en">
@@ -54,120 +64,7 @@ allNavBar = allNavBar.sort(
         <section class="bg-white dark:bg-gray-900">
           <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
             <ol class="relative border-l border-gray-200 dark:border-gray-700">
-              <li class="mb-10 ml-4">
-                <div
-                  class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"
-                >
-                </div>
-                <div class="flex justify-center">
-                  <div
-                    class="flex items-center content-center align-center text-gray-500 dark:text-gray-400 font-bold text-2xl justify-center w-72 h-14 bg-[#ebccca] rounded-md mb-5 mt-5 animation"
-                  >
-                    MORE
-                  </div>
-                </div>
-                <p
-                  class="mb-4 text-base font-normal text-xl text-gray-500 dark:text-gray-400 animation"
-                >
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Harum, dolor!
-                </p>
-              </li>
-              <li class="mb-10 ml-4">
-                <div
-                  class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"
-                >
-                </div>
-                <div class="flex justify-center">
-                  <div
-                    class="flex items-center content-center align-center text-gray-500 dark:text-gray-400 font-bold text-2xl justify-center w-72 h-14 bg-[#ebccca] rounded-md mb-5 mt-5 animation"
-                  >
-                    MORE
-                  </div>
-                </div>
-                <p
-                  class="mb-4 text-base font-normal text-xl text-gray-500 dark:text-gray-400 animation"
-                >
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Harum, dolor!
-                </p>
-              </li>
-              <li class="mb-10 ml-4">
-                <div
-                  class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"
-                >
-                </div>
-                <div class="flex justify-center">
-                  <div
-                    class="flex items-center content-center align-center text-gray-500 dark:text-gray-400 font-bold text-2xl justify-center w-72 h-14 bg-[#ebccca] rounded-md mb-5 mt-5 animation"
-                  >
-                    MORE
-                  </div>
-                </div>
-                <p
-                  class="mb-4 text-base font-normal text-xl text-gray-500 dark:text-gray-400 animation"
-                >
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Harum, dolor!
-                </p>
-              </li>
-              <li class="mb-10 ml-4">
-                <div
-                  class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"
-                >
-                </div>
-                <div class="flex justify-center">
-                  <div
-                    class="flex items-center content-center align-center text-gray-500 dark:text-gray-400 font-bold text-2xl justify-center w-72 h-14 bg-[#ebccca] rounded-md mb-5 mt-5 animation"
-                  >
-                    MORE
-                  </div>
-                </div>
-                <p
-                  class="mb-4 text-base font-normal text-xl text-gray-500 dark:text-gray-400 animation"
-                >
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Harum, dolor!
-                </p>
-              </li>
-              <li class="mb-10 ml-4">
-                <div
-                  class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"
-                >
-                </div>
-                <div class="flex justify-center">
-                  <div
-                    class="flex items-center content-center align-center text-gray-500 dark:text-gray-400 font-bold text-2xl justify-center w-72 h-14 bg-[#ebccca] rounded-md mb-5 mt-5 animation"
-                  >
-                    MORE
-                  </div>
-                </div>
-                <p
-                  class="mb-4 text-base font-normal text-xl text-gray-500 dark:text-gray-400 animation"
-                >
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Harum, dolor!
-                </p>
-              </li>
-              <li class="mb-10 ml-4">
-                <div
-                  class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"
-                >
-                </div>
-                <div class="flex justify-center">
-                  <div
-                    class="flex items-center content-center align-center text-gray-500 dark:text-gray-400 font-bold text-2xl justify-center w-72 h-14 bg-[#ebccca] rounded-md mb-5 mt-5 animation"
-                  >
-                    MORE
-                  </div>
-                </div>
-                <p
-                  class="mb-4 text-base font-normal text-xl text-gray-500 dark:text-gray-400 animation"
-                >
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Harum, dolor!
-                </p>
-              </li>
+              {allFaqEntry.map((p) => <FaqEntry post={p} />)}
             </ol>
           </div>
         </section>
