@@ -18,6 +18,15 @@ allAccommodation = allAccommodation.sort(
 );
 
 console.log("check accommodation", allAccommodation);
+
+let allNavBar = await Astro.glob("./content/navigationbar/*.md");
+allNavBar = allNavBar.sort(
+  (a, b) =>
+    new Date(b.frontmatter.publishDate).valueOf() -
+    new Date(a.frontmatter.publishDate).valueOf()
+);
+
+console.log("check navbar", allNavBar);
 ---
 
 <html lang="en">
@@ -27,7 +36,7 @@ console.log("check accommodation", allAccommodation);
 
   <body>
     <div class="ml-[auto] mr-[auto] w-full max-w-[65em] pl-[2rem] pr-[2rem]">
-      <Nav />
+      {allNavBar.map((p) => <Nav post={p} />)}
     </div>
     <div class="justify-center w-full">
       <main>

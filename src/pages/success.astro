@@ -8,6 +8,13 @@ import { SITE } from "../config";
 let { title } = SITE;
 let description = "Custom-made designs made simple";
 let permalink = "https://chipchop.nl/";
+
+let allNavBar = await Astro.glob("./content/navigationbar/*.md");
+allNavBar = allNavBar.sort(
+  (a, b) =>
+    new Date(b.frontmatter.publishDate).valueOf() -
+    new Date(a.frontmatter.publishDate).valueOf()
+);
 ---
 
 <html lang="en">
@@ -17,7 +24,7 @@ let permalink = "https://chipchop.nl/";
 
   <body>
     <div class="ml-[auto] mr-[auto] w-full max-w-[65em] pl-[2rem] pr-[2rem]">
-      <Nav />
+      {allNavBar.map((p) => <Nav post={p} />)}
       <div class="ml-[auto] mr-[auto] w-full max-w-[65em] pl-[2rem] pr-[2rem]">
         <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">
           <h1
