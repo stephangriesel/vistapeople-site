@@ -98,6 +98,36 @@ export default defineConfig({
             ],
           },
           {
+            name: "faq",
+            label: "FAQ Intro",
+            label_singular: "FAQ",
+            folder: "src/pages/content/faq",
+            create: true,
+            delete: true,
+            fields: [
+              { name: "title", widget: "string", label: "Post Title" },
+              {
+                name: "description",
+                widget: "string",
+                label: "Description",
+                required: true,
+              },
+              { name: "tag", widget: "string", label: "Tag", required: true },
+              { name: "body", widget: "markdown", label: "Post Body" },
+              {
+                name: "layout",
+                widget: "select",
+                default: "../../../layouts/General.astro",
+                options: [
+                  {
+                    label: "Gallery Post",
+                    value: "../../../layouts/General.astro",
+                  },
+                ],
+              },
+            ],
+          },
+          {
             name: "navigationbar",
             label: "Navigation Bar",
             label_singular: "Navigation Bar",
