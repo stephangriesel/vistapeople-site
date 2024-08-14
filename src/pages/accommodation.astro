@@ -5,6 +5,7 @@ import Footer from "../components/Footer.astro";
 import { SITE } from "../config";
 
 import AccommodationIntro from "../components/AccommodationIntro.astro";
+import AccommodationHero from "../components/AccommodationHero.astro";
 
 let { title } = SITE;
 let description = "Custom-made designs made simple";
@@ -48,11 +49,7 @@ console.log("check navbar", allNavBar);
       </main>
     </div>
     <section class="w-full h-screen">
-      <img
-        src="https://placehold.co/600x400?text=Accommodation"
-        class="object-cover w-full h-full animation"
-        alt="Accommodation"
-      />
+      <AccommodationHero post={allAccommodation[0]} />
     </section>
     <div class="ml-[auto] mr-[auto] w-full max-w-[65em] pl-[2rem] pr-[2rem]">
       <main>
