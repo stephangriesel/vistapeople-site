@@ -82,6 +82,12 @@ export default defineConfig({
                 label: "Description",
                 required: true,
               },
+              {
+                label: "Hero Image",
+                name: "thumbnail",
+                widget: "image",
+                choose_url: true,
+              },
               { name: "tag", widget: "string", label: "Tag", required: true },
               { name: "body", widget: "markdown", label: "Post Body" },
               {
