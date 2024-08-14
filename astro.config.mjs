@@ -69,7 +69,7 @@ export default defineConfig({
           },
           {
             name: "accommodation",
-            label: "Accommodation Intro",
+            label: "Accommodation",
             label_singular: "Accommodation",
             folder: "src/pages/content/accommodation",
             create: true,
@@ -105,7 +105,7 @@ export default defineConfig({
           },
           {
             name: "faq",
-            label: "FAQ Intro",
+            label: "FAQ",
             label_singular: "FAQ",
             folder: "src/pages/content/faq",
             create: true,
@@ -134,7 +134,7 @@ export default defineConfig({
           },
           {
             name: "rsvp",
-            label: "RSVP Intro",
+            label: "RSVP",
             label_singular: "rsvp",
             folder: "src/pages/content/rsvp",
             create: true,
