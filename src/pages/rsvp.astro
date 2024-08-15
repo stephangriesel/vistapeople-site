@@ -6,6 +6,7 @@ import { SITE } from "../config";
 
 import RSVPIntro from "../components/RSVPIntro.astro";
 import RSVPHero from "../components/RSVPHero.astro";
+import RSVPFooter from "../components/RSVPFooter.astro";
 
 let { title } = SITE;
 let description = "Custom-made designs made simple";
@@ -171,11 +172,7 @@ allNavBar = allNavBar.sort(
     </div>
 
     <section class="w-full h-full">
-      <img
-        src="https://placehold.co/600x400?text=Footer+Image"
-        class="object-cover w-full animation"
-        alt="Wood Work"
-      />
+      <RSVPFooter post={allRSVP[0]} />
     </section>
     <Footer />
     <style>
