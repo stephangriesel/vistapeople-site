@@ -149,11 +149,17 @@ export default defineConfig({
               },
               {
                 label: "Hero Image",
-                name: "thumbnail",
+                name: "RSVPHeroImg",
                 widget: "image",
                 choose_url: true,
               },
               { name: "body", widget: "markdown", label: "Post Body" },
+              {
+                label: "Footer Image",
+                name: "RSVPFooterImg",
+                widget: "image",
+                choose_url: true,
+              },
               {
                 name: "layout",
                 widget: "select",
