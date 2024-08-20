@@ -9,10 +9,10 @@ dependencies:
     specifier: ^3.1.1
     version: 3.1.1(astro@4.0.7)(tailwindcss@3.3.2)
   '@types/react':
-    specifier: ^17
+    specifier: ^17.0.65
     version: 17.0.65
   '@types/react-dom':
-    specifier: ^17
+    specifier: ^17.0.25
     version: 17.0.25
   astro-embed:
     specifier: ^0.2.1
@@ -30,10 +30,10 @@ dependencies:
     specifier: ^2.15.72
     version: 2.15.72(@types/react@17.0.65)(graphql@15.8.0)(react-dom@17.0.2)(react@17.0.2)
   react:
-    specifier: ^17
+    specifier: ^17.0.2
     version: 17.0.2
   react-dom:
-    specifier: ^17
+    specifier: ^17.0.2
     version: 17.0.2(react@17.0.2)
   tailwindcss:
     specifier: ^3.3.2
