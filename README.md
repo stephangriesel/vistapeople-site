@@ -12,3 +12,7 @@ If you receive this error: Internal server error: Failed to resolve import "netl
 Run this in your terminal
 
 `pnpm i {,@types/}{react,react-dom}@^17 netlify-cms-app`
+
+If you receive the "spawn" error change `./node_modules/astro-netlify-cms/dist/index.js`:
+From `proxy = spawn('netlify-cms-proxy-server',` to
+`proxy = spawn('netlify-cms-proxy-server',`
