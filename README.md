@@ -8,9 +8,6 @@
 ### Troubleshoot
 
 If you receive this error: Internal server error: Failed to resolve import "netlify-cms-app" from "virtual:astro-netlify-cms/user-config
-
-Run this in your terminal
-
 `pnpm i {,@types/}{react,react-dom}@^17 netlify-cms-app`
 
 If you receive the "spawn" error change `./node_modules/astro-netlify-cms/dist/index.js`:
