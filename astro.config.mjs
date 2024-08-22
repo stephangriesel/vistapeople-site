@@ -68,6 +68,35 @@ export default defineConfig({
             ],
           },
           {
+            name: "homeintro",
+            label: "Home Intro",
+            label_singular: "intro",
+            folder: "src/pages/content/homeintro",
+            create: true,
+            delete: true,
+            fields: [
+              { name: "title", widget: "string", label: "Post Title" },
+              {
+                name: "description",
+                widget: "string",
+                label: "Description",
+                required: true,
+              },
+              { name: "body", widget: "markdown", label: "Post Body" },
+              {
+                name: "layout",
+                widget: "select",
+                default: "../../../layouts/General.astro",
+                options: [
+                  {
+                    label: "General",
+                    value: "../../../layouts/General.astro",
+                  },
+                ],
+              },
+            ],
+          },
+          {
             name: "accommodation",
             label: "Accommodation",
             label_singular: "Accommodation",
