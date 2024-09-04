@@ -1,3 +1,3 @@
 export const SITE = {
-  title: 'ChipChop',
+  title: "Vista People",
 };
