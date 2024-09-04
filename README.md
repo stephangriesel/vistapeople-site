@@ -12,4 +12,4 @@ If you receive this error: Internal server error: Failed to resolve import "netl
 
 If you receive the "spawn" error change `./node_modules/astro-netlify-cms/dist/index.js`:
 From `proxy = spawn('netlify-cms-proxy-server',` to
-`proxy = spawn('netlify-cms-proxy-server',`
+`proxy = spawn('pnpx', ['netlify-cms-proxy-server'],`
