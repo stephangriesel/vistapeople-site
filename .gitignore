@@ -19,4 +19,5 @@ pnpm-debug.log*
 .DS_Store
 
 notes.txt
-content/
+providedcontent/
+.astro/
