@@ -68,10 +68,10 @@ export default defineConfig({
             ],
           },
           {
-            name: "homeintro",
-            label: "Home Intro",
+            name: "hero",
+            label: "Hero Intro",
             label_singular: "intro",
-            folder: "src/pages/content/homeintro",
+            folder: "src/pages/content/hero",
             create: true,
             delete: true,
             fields: [
