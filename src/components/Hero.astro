@@ -1,4 +1,10 @@
-<!-- ====== Hero Section Start -->
+---
+export interface Props {
+  post: any;
+}
+
+const { post } = Astro.props;
+---
 <section
   id="home"
   class="relative overflow-hidden bg-primary pt-[120px] md:pt-[130px] lg:pt-[160px]"
