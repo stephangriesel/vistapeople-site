@@ -11,13 +11,20 @@ import Team from '../components/Team.astro';
 import Contact from '../components/Contactsection.astro';
 import CTA from '../components/CTAsection.astro';
 import Blogsection from '../components/Blogsection.astro';
+
+let allHero = await Astro.glob("./content/hero/*.md");
+allHero = allHero.sort(
+  (a, b) =>
+    new Date(b.frontmatter.publishDate).valueOf() -
+    new Date(a.frontmatter.publishDate).valueOf()
+);
 ---
 
 <Layout
   description="Play Astro is a free and open-source Astro template, built for startups, SaaS companies, apps, businesses, and more."
   title="Free Astro Template and Starter for SaaS, Startup, and App Sites | Play Astro"
 >
-  <Hero />
+  <Hero post={allHero[0]}/>
   <Features />
   <About />
   <CTA />
