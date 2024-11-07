@@ -4,6 +4,7 @@ export interface Props {
 }
 
 const { post } = Astro.props;
+console.log("hero component",post.frontmatter)
 ---
 <section
   id="home"
@@ -19,41 +20,30 @@ const { post } = Astro.props;
           <h1
             class="mb-6 text-3xl font-bold leading-snug text-white sm:text-4xl sm:leading-snug lg:text-5xl lg:leading-[1.2]"
           >
-            Free Astro Template and Starter for SaaS, Startup, and App Sites
+            {post.frontmatter.title}
             </h1>
           <p
             class="mx-auto mb-9 max-w-[600px] font-medium text-base text-white sm:text-lg sm:leading-[1.44]"
           >
-A fantastic free and open-source Astro template, built for startups, SaaS companies, apps, businesses, and more. Comes with all essential pages, sections, components and fully-functional blog.
+          {post.frontmatter.description}
           </p>
           <ul class="mb-10 flex gap-5 flex-wrap items-center justify-center">
             <li>
               <a
-                href="https://github.com/TailGrids/play-astro/archive/refs/heads/main.zip"
+                href={post.frontmatter.ctaleftlink}
                 class="inline-flex items-center justify-center rounded-md bg-white py-[14px] px-7 text-center text-base font-medium text-dark shadow-1 transition duration-300 ease-in-out hover:text-body-color hover:bg-gray-2"
               >
-                Download Now
+                {post.frontmatter.ctaleft}
               </a>
             </li>
             <li>
               <a
-                href="https://github.com/tailgrids/play-astro"
+                href={post.frontmatter.ctarightlink}
                 target="_blank"
                 class="flex items-center gap-4 py-[14px] rounded-md bg-white/[0.12] px-6 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-white hover:text-dark"
               >
-                <svg class="fill-current" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <g clip-path="url(#clip0_2005_10818)">
-                    <path
-                      d="M12 0.674805C5.625 0.674805 0.375 5.8498 0.375 12.2998C0.375 17.3998 3.7125 21.7498 8.3625 23.3248C8.9625 23.4373 9.15 23.0623 9.15 22.7998C9.15 22.5373 9.15 21.7873 9.1125 20.7748C5.8875 21.5248 5.2125 19.1998 5.2125 19.1998C4.6875 17.8873 3.9 17.5123 3.9 17.5123C2.85 16.7623 3.9375 16.7623 3.9375 16.7623C5.1 16.7998 5.7375 17.9623 5.7375 17.9623C6.75 19.7623 8.475 19.2373 9.1125 18.8998C9.225 18.1498 9.525 17.6248 9.8625 17.3248C7.3125 17.0623 4.575 16.0498 4.575 11.6248C4.575 10.3498 5.0625 9.3373 5.775 8.5498C5.6625 8.2873 5.25 7.0873 5.8875 5.4748C5.8875 5.4748 6.9 5.1748 9.1125 6.6748C10.05 6.4123 11.025 6.2623 12.0375 6.2623C13.05 6.2623 14.0625 6.3748 14.9625 6.6748C17.175 5.2123 18.15 5.4748 18.15 5.4748C18.7875 7.0498 18.4125 8.2873 18.2625 8.5498C19.0125 9.3373 19.4625 10.3873 19.4625 11.6248C19.4625 16.0498 16.725 17.0623 14.175 17.3248C14.5875 17.6998 14.9625 18.4498 14.9625 19.4998C14.9625 21.0748 14.925 22.3123 14.925 22.6873C14.925 22.9873 15.15 23.3248 15.7125 23.2123C20.2875 21.6748 23.625 17.3623 23.625 12.2248C23.5875 5.8498 18.375 0.674805 12 0.674805Z" />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_2005_10818">
-                      <rect width="24" height="24" fill="white" />
-                    </clipPath>
-                  </defs>
-                </svg>
-                Star on Github
+              <svg xmlns="http://www.w3.org/2000/svg" class="text-white text-black hover:fill-current hover:text-black duration-300 ease-in-out" fill="#FFFFFF" width="32" height="32" viewBox="0 0 256 256"><path d="M229.66,58.34l-32-32a8,8,0,0,0-11.32,0l-96,96A8,8,0,0,0,88,128v32a8,8,0,0,0,8,8h32a8,8,0,0,0,5.66-2.34l96-96A8,8,0,0,0,229.66,58.34ZM124.69,152H104V131.31l64-64L188.69,88ZM200,76.69,179.31,56,192,43.31,212.69,64ZM224,128v80a16,16,0,0,1-16,16H48a16,16,0,0,1-16-16V48A16,16,0,0,1,48,32h80a8,8,0,0,1,0,16H48V208H208V128a8,8,0,0,1,16,0Z"></path></svg>
+                {post.frontmatter.ctaright}
               </a>
             </li>
           </ul>
