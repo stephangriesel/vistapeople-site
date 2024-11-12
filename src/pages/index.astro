@@ -1,5 +1,6 @@
 ---
 import About from '../components/Aboutsection.astro';
+import AboutContinue from '../components/AboutsectionContinue.astro';
 import Features from '../components/Features.astro';
 import Hero from '../components/Hero.astro';
 import Testimonials from '../components/Testimonials.astro';
@@ -18,6 +19,13 @@ allHero = allHero.sort(
     new Date(b.frontmatter.publishDate).valueOf() -
     new Date(a.frontmatter.publishDate).valueOf()
 );
+
+let allAbout = await Astro.glob("./content/about/*.md");
+allAbout = allAbout.sort(
+  (a, b) =>
+    new Date(b.frontmatter.publishDate).valueOf() -
+    new Date(a.frontmatter.publishDate).valueOf()
+);
 ---
 
 <Layout
@@ -25,8 +33,9 @@ allHero = allHero.sort(
   title="Free Astro Template and Starter for SaaS, Startup, and App Sites | Play Astro"
 >
   <Hero post={allHero[0]}/>
+  <About post={allAbout[0]} />
+  <AboutContinue post={allAbout[0]} />
   <Features />
-  <About />
   <CTA />
   <Pricing />
   <Testimonials />
