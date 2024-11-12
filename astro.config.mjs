@@ -77,6 +77,67 @@ export default defineConfig({
               },
             ],
           },
+          {
+            name: "about",
+            label: "About",
+            label_singular: "about",
+            folder: "src/pages/content/about",
+            create: true,
+            delete: true,
+            fields: [
+              { name: "title", widget: "string", label: "Post Title 1" },
+              {
+                name: "description1",
+                widget: "string",
+                label: "Paragraph 1",
+                required: true,
+              },
+              {
+                name: "description2",
+                widget: "string",
+                label: "Paragraph 2",
+                required: true,
+              },
+              {
+                name: "description3",
+                widget: "string",
+                label: "Paragraph 3",
+                required: true,
+              },
+              { name: "title2", widget: "string", label: "Post Title 2" },
+              {
+                name: "description4",
+                widget: "string",
+                label: "Paragraph 4",
+                required: true,
+              },
+              { name: "title3", widget: "string", label: "Post Title 3" },
+              {
+                name: "description5",
+                widget: "string",
+                label: "Paragraph 5",
+                required: true,
+              },
+              {
+                name: "cta",
+                widget: "string",
+                label: "CTA",
+                required: true,
+              },
+              { name: "body", widget: "markdown", label: "Post Body" },
+              {
+                name: "layout",
+                widget: "select",
+                default: "../../../layouts/General.astro",
+                options: [
+                  {
+                    label: "General",
+                    value: "../../../layouts/General.astro",
+                  },
+                ],
+              },
+            ],
+          },
           
         ],
       },
