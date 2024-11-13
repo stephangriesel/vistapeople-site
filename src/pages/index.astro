@@ -26,6 +26,12 @@ allAbout = allAbout.sort(
     new Date(b.frontmatter.publishDate).valueOf() -
     new Date(a.frontmatter.publishDate).valueOf()
 );
+let allServices = await Astro.glob("./content/services/*.md");
+allServices = allServices.sort(
+  (a, b) =>
+    new Date(b.frontmatter.publishDate).valueOf() -
+    new Date(a.frontmatter.publishDate).valueOf()
+);
 ---
 
 <Layout
@@ -35,7 +41,7 @@ allAbout = allAbout.sort(
   <Hero post={allHero[0]}/>
   <About post={allAbout[0]} />
   <AboutContinue post={allAbout[0]} />
-  <Features />
+  <Features post={allServices[0]} />
   <CTA />
   <Pricing />
   <Testimonials />
