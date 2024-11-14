@@ -1,4 +1,6 @@
 ---
+import { Icon } from 'astro-icon/components'
+
 export interface Props {
   post: any;
 }
@@ -32,7 +34,7 @@ const { post } = Astro.props;
                 <span
                   class="absolute top-0 left-0 -z-[1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-[14px] bg-primary bg-opacity-20 duration-300 group-hover:rotate-45"
                 ></span>
-                <img src="#" alt="icon" />
+                <Icon name={post.frontmatter.block1icon} />
               </div>
               <h4 class="mb-3 text-xl font-bold text-dark dark:text-white">
                 {post.frontmatter.block1title}
@@ -40,12 +42,6 @@ const { post } = Astro.props;
               <p class="mb-8 text-body-color dark:text-dark-6 lg:mb-9">
                 {post.frontmatter.block1text}
               </p>
-              <a
-                href="#"
-                class="text-base font-medium text-dark dark:text-white hover:text-primary dark:hover:text-primary"
-              >
-                title
-              </a>
             </div>
           </div>
           <div class="w-full px-4 md:w-1/2 lg:w-1/4">
@@ -56,7 +52,7 @@ const { post } = Astro.props;
                 <span
                   class="absolute top-0 left-0 -z-[1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-[14px] bg-primary bg-opacity-20 duration-300 group-hover:rotate-45"
                 ></span>
-                <img src="#" alt="icon" />
+                <Icon name={post.frontmatter.block2icon} />
               </div>
               <h4 class="mb-3 text-xl font-bold text-dark dark:text-white">
                 {post.frontmatter.block2title}
@@ -64,12 +60,6 @@ const { post } = Astro.props;
               <p class="mb-8 text-body-color dark:text-dark-6 lg:mb-9">
                 {post.frontmatter.block2text}
               </p>
-              <a
-                href="#"
-                class="text-base font-medium text-dark dark:text-white hover:text-primary dark:hover:text-primary"
-              >
-                title
-              </a>
             </div>
           </div>
           <div class="w-full px-4 md:w-1/2 lg:w-1/4">
@@ -80,7 +70,7 @@ const { post } = Astro.props;
                 <span
                   class="absolute top-0 left-0 -z-[1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-[14px] bg-primary bg-opacity-20 duration-300 group-hover:rotate-45"
                 ></span>
-                <img src="#" alt="icon" />
+                <Icon name={post.frontmatter.block3icon} />
               </div>
               <h4 class="mb-3 text-xl font-bold text-dark dark:text-white">
                 {post.frontmatter.block3title}
@@ -88,12 +78,6 @@ const { post } = Astro.props;
               <p class="mb-8 text-body-color dark:text-dark-6 lg:mb-9">
                 {post.frontmatter.block3text}
               </p>
-              <a
-                href="#"
-                class="text-base font-medium text-dark dark:text-white hover:text-primary dark:hover:text-primary"
-              >
-                title
-              </a>
             </div>
           </div>
           <div class="w-full px-4 md:w-1/2 lg:w-1/4">
@@ -104,7 +88,7 @@ const { post } = Astro.props;
                 <span
                   class="absolute top-0 left-0 -z-[1] mb-8 flex h-[70px] w-[70px] rotate-[25deg] items-center justify-center rounded-[14px] bg-primary bg-opacity-20 duration-300 group-hover:rotate-45"
                 ></span>
-                <img src="#" alt="icon" />
+                <Icon name={post.frontmatter.block4icon} />
               </div>
               <h4 class="mb-3 text-xl font-bold text-dark dark:text-white">
                 {post.frontmatter.block4title}
@@ -112,12 +96,6 @@ const { post } = Astro.props;
               <p class="mb-8 text-body-color dark:text-dark-6 lg:mb-9">
                 {post.frontmatter.block4text}
               </p>
-              <a
-                href="#"
-                class="text-base font-medium text-dark dark:text-white hover:text-primary dark:hover:text-primary"
-              >
-                title
-              </a>
             </div>
           </div>
     </div>
