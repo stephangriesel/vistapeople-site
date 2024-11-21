@@ -50,6 +50,9 @@ importers:
       tailwindcss:
         specifier: ^3.3.3
         version: 3.4.14
+      wow.js:
+        specifier: ^1.2.2
+        version: 1.2.2
     devDependencies:
       prettier:
         specifier: ^3.0.3
@@ -4673,6 +4676,10 @@ packages:
   winston@3.16.0:
     resolution: {integrity: sha512-xz7+cyGN5M+4CmmD4Npq1/4T+UZaz7HaeTlAruFUTjk79CNMq+P6H30vlE4z0qfqJ01VHYQwd7OZo03nYm/+lg==}
     engines: {node: '>= 12.0.0'}
+
+  wow.js@1.2.2:
+    resolution: {integrity: sha512-YTW9eiZimHCJDWofsiz2507txaPteUiQD461I/D8533AiRAn3+Y68/1LDuQ3OTgPjagGZLPYKrpoSgjzeQrO6A==}
+    deprecated: deprecated in favour of aos (Animate On Scroll)
 
   wrap-ansi@7.0.0:
     resolution: {integrity: sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==}
@@ -10237,6 +10244,8 @@ snapshots:
       stack-trace: 0.0.10
       triple-beam: 1.4.1
       winston-transport: 4.8.0
+
+  wow.js@1.2.2: {}
 
   wrap-ansi@7.0.0:
     dependencies:
