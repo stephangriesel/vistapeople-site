@@ -32,6 +32,12 @@ allServices = allServices.sort(
     new Date(b.frontmatter.publishDate).valueOf() -
     new Date(a.frontmatter.publishDate).valueOf()
 );
+let allCtaSection = await Astro.glob("./content/ctasection/*.md");
+allCtaSection = allCtaSection.sort(
+  (a, b) =>
+    new Date(b.frontmatter.publishDate).valueOf() -
+    new Date(a.frontmatter.publishDate).valueOf()
+);
 ---
 
 <Layout
@@ -42,7 +48,7 @@ allServices = allServices.sort(
   <About post={allAbout[0]} />
   <AboutContinue post={allAbout[0]} />
   <Features post={allServices[0]} />
-  <CTA />
+  <CTA post={allCtaSection[0]}/>
   <!-- <Pricing /> -->
   <Testimonials />
   <!-- <Faq /> -->
