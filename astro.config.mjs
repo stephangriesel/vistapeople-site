@@ -306,6 +306,51 @@ export default defineConfig({
               },
             ],
           },
+          {
+            name: "testimonials",
+            label: "Testimonials",
+            label_singular: "testimonial",
+            folder: "src/pages/content/testimonials",
+            create: true,
+            delete: true,
+            fields: [
+              {
+                name: "authorname1",
+                widget: "string",
+                label: "Author Name",
+                required: true,
+              },
+              {
+                name: "authorrole1",
+                widget: "string",
+                label: "Author Role",
+                required: true,
+              },
+              {
+                name: "image1",
+                widget: "image",
+                label: "Image",
+                required: true
+              },
+              {
+                name: "message1",
+                widget: "string",
+                label: "Message 1",
+                required: true,
+              },
+              {
+                name: "layout",
+                widget: "select",
+                default: "../../../layouts/General.astro",
+                options: [
+                  {
+                    label: "General",
+                    value: "../../../layouts/General.astro",
+                  },
+                ],
+              },
+            ],
+          },
         ],
       },
     }),
