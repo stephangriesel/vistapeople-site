@@ -38,6 +38,13 @@ allCtaSection = allCtaSection.sort(
     new Date(b.frontmatter.publishDate).valueOf() -
     new Date(a.frontmatter.publishDate).valueOf()
 );
+
+let allTestimonials = await Astro.glob("./content/testimonials/*.md");
+allTestimonials = allTestimonials.sort(
+  (a, b) =>
+    new Date(b.frontmatter.publishDate).valueOf() -
+    new Date(a.frontmatter.publishDate).valueOf()
+);
 ---
 
 <Layout
@@ -50,7 +57,7 @@ allCtaSection = allCtaSection.sort(
   <Features post={allServices[0]} />
   <CTA post={allCtaSection[0]}/>
   <!-- <Pricing /> -->
-  <Testimonials />
+  <Testimonials post={allTestimonials[0]} />
   <!-- <Faq /> -->
   <!-- <Team /> -->
   <!-- <Blogsection /> -->
