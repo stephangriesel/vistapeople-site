@@ -1,10 +1,10 @@
 ---
-title: Hero Title
-description: Hero Description
-ctaleft: More Info
-ctaleftlink: "#"
-ctaright: Contact
-ctarightlink: "#"
+title: Remote. Work. Everywhere
+description: ""
+ctaleft: ""
+ctaleftlink: ""
+ctaright: ""
+ctarightlink: ""
 layout: ../../../layouts/General.astro
 ---
 Some more
