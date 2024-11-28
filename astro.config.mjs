@@ -35,6 +35,8 @@ export default defineConfig({
             delete: true,
             fields: [
               { name: "title", widget: "string", label: "Post Title", required: true },
+              { name: "backgroundvideo", widget: "string", label: "Background Video Url", required: false },
+              { name: "backgroundphoto", widget: "string", label: "Background Photo", required: false },
               {
                 name: "description",
                 widget: "string",
