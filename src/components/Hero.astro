@@ -15,11 +15,11 @@ console.log("hero component", post.frontmatter);
     autoplay
     loop
     muted
-    poster="path/to/poster.jpg"
+    poster={post.frontmatter.backgroundphoto}
     class="absolute inset-0 -z-10 w-full h-full object-cover"
   >
     <source
-      src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-26070-large.mp4"
+      src={post.frontmatter.backgroundvideo}
       type="video/mp4"
     /> Your browser does not support the video tag.
   </video>
