@@ -1,10 +1,24 @@
 ---
+import SingleFull from '../components/layout/SingleFull.astro';
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from "astro:content";
+
+// Filter blog entries with 'draft: false' & date before current date
+const publishedBlogEntries = await getCollection("blog", ({ data }) => {
+  return !data.draft && data.publishDate < new Date();
+});
+
+// Sort content entries by publication date
+publishedBlogEntries.sort(function (a, b) {
+  return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
+});
 ---
 
 <Layout
   description="Remote. Work. Everywhere."
   title="VistaPeople"
 >
-<h1>Thank you! We will get back to you soon.</h1>
+  <SingleFull>
+    <Fragment slot="title">Thank you! Will will get back to you soon!</Fragment>
+  </SingleFull>
 </Layout>
