@@ -94,15 +94,15 @@
               .then(response => {
                 // Check if the submission was successful
                 if (response.ok) {
-                  form.innerHTML = '<div class="success-message">Thank you for your submission!</div>';
+                  form.innerHTML = '<div class="text-dark dark:text-white">Thank you for reaching out! We will get back to you.</div>';
                 } else {
                   // Handle errors
-                  form.innerHTML = '<div class="error-message">There was an error submitting the form.</div>';
+                  form.innerHTML = '<div class="text-dark dark:text-white">There was an error submitting the form.</div>';
                 }
               })
               .catch(error => {
                 // Handle errors
-                form.innerHTML = '<div class="error-message">There was an error submitting the form.</div>';
+                form.innerHTML = '<div class="text-dark dark:text-white">There was an error submitting the form.</div>';
               });
             });
           </script>
