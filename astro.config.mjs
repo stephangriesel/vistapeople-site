@@ -17,7 +17,7 @@ export default defineConfig({
         // Use Netlify’s “Git Gateway” authentication and target our default branch
         backend: {
           name: "git-gateway",
-          branch: "latest",
+          branch: "master",
         },
         // Logo for backend
         logo_url: `https://res.cloudinary.com/stephangriesel/image/upload/v1687318146/logo_cqhhz9.png`,
