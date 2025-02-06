@@ -9,7 +9,9 @@ module.exports = {
         current: "current=page",
       },
       fontFamily: {
-        "pathway-gothic-one": ['"Pathway Gothic One"'],
+        fira: ['Fira Sans', 'sans-serif'], 
+        pathway: ['Pathway Gothic One', 'sans-serif'], 
+        roboto: ['Roboto', 'sans-serif'], 
       },
       width: {
         128: "32rem",
