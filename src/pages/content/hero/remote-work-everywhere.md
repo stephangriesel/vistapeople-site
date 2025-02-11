@@ -1,7 +1,7 @@
 ---
 title: Remote. Work. Everywhere
-backgroundvideo: https://res.cloudinary.com/stephangriesel/video/upload/v1734069527/tmloop_seamless_loop_hiadbz.mp4
-backgroundphoto: https://res.cloudinary.com/stephangriesel/image/upload/v1734069708/0007_gohj2a.jpg
+backgroundvideo: ""
+backgroundphoto: https://res.cloudinary.com/stephangriesel/image/upload/v1739250014/pexels-pixabay-41949_dlwncz.jpg
 description: ""
 ctaleft: ""
 ctaleftlink: ""
