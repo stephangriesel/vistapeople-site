@@ -36,16 +36,7 @@ const menuitems = [
       <div class="flex max-w-full px-4">
         <div>
           <a href="/" class="navbar-logo block w-full">
-            {
-              Astro.url.pathname === "/" ? (
-                <span class="header-logo w-[8em] dark:text-white font-roboto font-bold text-black text-4xl">Vista</span><span class="dark:text-white font-roboto text-black text-4xl">People</span>
-              ) : (
-                <>
-                  <span class="w-full dark:text-white text-black dark:hidden font-bold">Vista</span><span class="w-full dark:text-white text-black dark:hidden">People</span>
-                  <span class="w-full hidden dark:block text-white font-bold">Vista</span><span class="w-full dark:text-white text-black dark:hidden">People</span>
-                </>
-              )
-            }
+            <span class="header-logo w-[8em] text-white font-roboto font-bold text-4xl">Vista</span><span class="font-roboto text-white text-4xl">People</span>
           </a>
         </div>
       </div>
@@ -78,7 +69,7 @@ const menuitems = [
                         <a
                           href={item.path}
                           class={` ${index}
-                          ${Astro.url.pathname === "/" ? "ud-menu-scroll mx-8 flex py-2 font-medium text-base text-dark dark:text-white group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-black lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10" : "ud-menu-scroll mx-8 flex py-2 font-medium text-base text-dark dark:text-white group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-body-color dark:lg:text-dark-6 xl:ml-10"}
+                          ${Astro.url.pathname === "/" ? "mx-8 flex py-2 font-medium text-base text-dark dark:text-white group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-black lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10" : "mx-8 flex py-2 font-medium text-base text-dark dark:text-white group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-body-color dark:lg:text-dark-6 xl:ml-10"}
                           `}
                         >
                           {item.title}
