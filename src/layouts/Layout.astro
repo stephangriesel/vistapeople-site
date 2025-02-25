@@ -1,7 +1,7 @@
 ---
-import Footer from '../components/layout/Footer.astro';
-import Header from '../components/layout/Header.astro';
-import BackToTop from '../components/layout/BackToTop.astro';
+import Footer from "../components/layout/Footer.astro";
+import Header from "../components/layout/Header.astro";
+import BackToTop from "../components/layout/BackToTop.astro";
 // import MadeWithButton from '../components/layout/MadeWithButton.astro';
 
 interface Props {
@@ -13,7 +13,7 @@ interface Props {
 const { description, title, image } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -38,6 +38,37 @@ const { description, title, image } = Astro.props;
     <BackToTop />
     <!-- <MadeWithButton /> -->
     <style is:global>
+      @import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;700&family=Roboto:wght@400;700;900&display=swap"); /* Include weights for both */
+
+      .fira-sans-text {
+        font-family: "Fira Sans", sans-serif;
+        font-weight: 400; /* Explicitly set regular weight */
+      }
+
+      .fira-sans-300 {
+        font-family: "Fira Sans", sans-serif;
+        font-weight: 300; /* Explicitly set light weight */
+      }
+
+      .fira-sans-bold-700 {
+        font-family: "Fira Sans", sans-serif;
+        font-weight: 700; /* Explicitly set bold weight */
+      }
+
+      .roboto-text {
+        font-family: "Roboto", sans-serif;
+        font-weight: 400; /* Explicitly set regular weight */
+      }
+
+      .roboto-bold-700 {
+        font-family: "Roboto", sans-serif;
+        font-weight: 700; /* Explicitly set bold weight */
+      }
+      .roboto-bold-900 {
+        font-family: "Roboto", sans-serif;
+        font-weight: 900; /* Explicitly set black weight */
+      }
+
       .sticky-header {
         @apply fixed z-[9999] bg-dark/80 transition;
         backdrop-filter: blur(5px);
@@ -97,7 +128,6 @@ const { description, title, image } = Astro.props;
       .common-carousel .swiper-button-prev svg {
         @apply w-auto h-auto;
       }
-
     </style>
     <script>
       import "../scripts/stickymenu.js";
