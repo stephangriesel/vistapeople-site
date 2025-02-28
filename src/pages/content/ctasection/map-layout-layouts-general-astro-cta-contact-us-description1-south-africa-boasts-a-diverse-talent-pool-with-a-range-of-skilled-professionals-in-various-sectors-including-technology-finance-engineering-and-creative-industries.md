@@ -1,22 +1,22 @@
 ---
 maintitle: Why South Africa
-title1: Diverse Skilled Workforce
-description1: South Africa boasts a diverse talent pool with a range of skilled
-  professionals in various sectors, including technology, finance, engineering,
-  and creative industries. South Africa's educational system produces graduates
-  equipped with the necessary skills to meet global standards, making it easier
-  for your company to find qualified employees.
-title2: Cost-Effective Employment
-description2: The cost of living in South Africa is relatively lower compared to
-  many Western countries. This results in lower wage expectations while still
-  providing local employees with a comfortable standard of living. For your
-  company, this translates to significant savings in labor costs.
-title3: Time Zone Advantages
-description3: "Situated at the southern tip of Africa, South Africa operates in
-  a time zone that allows for convenient communication and collaboration with
-  American, European and Asian markets. This geographical advantage facilitates
-  better coordination across global teams. "
-cta: Contact Us
+title1: A Diverse and Skilled Talent Pool
+description1: South Africa is home to a rich tapestry of skilled professionals
+  across various industries, including technology, finance, engineering, and
+  creative sectors. Our educational system generates graduates who possess the
+  competencies needed to meet international standards, making it easier for your
+  business to source qualified talent.
+title2: Cost-Effective Workforce Solutions
+description2: With a lower cost of living compared to many Western nations,
+  South Africa offers a workforce with more affordable wage expectations while
+  ensuring a comfortable standard of living for employees. This dynamic provides
+  your company with substantial savings on labor costs.
+title3: Strategic Time Zone Benefits
+description3: Located at the southern tip of Africa, South Africa operates
+  within a time zone that facilitates seamless communication and collaboration
+  with markets in America, Europe, and Asia. This geographical advantage
+  enhances coordination across global teams.
+cta: Get in touch
 ctaurl: "#"
 layout: ../../../layouts/General.astro
 title: Why South Africa
