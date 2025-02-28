@@ -1,5 +1,5 @@
 ---
-title: Remote. Work. Everywhere
+title: Your South African Employer of Record
 backgroundvideo: ""
 backgroundphoto: https://res.cloudinary.com/stephangriesel/image/upload/v1739250014/pexels-pixabay-41949_dlwncz.jpg
 description: ""
