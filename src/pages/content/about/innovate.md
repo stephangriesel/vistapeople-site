@@ -1,7 +1,6 @@
 ---
 title: Innovate
-description1: "At Vista People, we believe in the power of innovation to
-  contribute to the growth of your company. "
+description1: ""
 description2: "We help you set up remote working capacity in South Africa,
   whether its one person while you test out the waters, or building a team of
   hundred we are there to help you. "
