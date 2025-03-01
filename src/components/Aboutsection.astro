@@ -21,11 +21,23 @@ console.log("about", post.frontmatter)
               {post.frontmatter.title}
             </h2>
             <p class="mb-10 text-base leading-relaxed text-body-color dark:text-dark-6">
-              {post.frontmatter.description1}
-              <br><br>
-              {post.frontmatter.description2}
-              <br><br>
-              {post.frontmatter.description3}
+              {post.frontmatter.description1 && (
+                <>
+                  {post.frontmatter.description1}
+                  {post.frontmatter.description2 || post.frontmatter.description3 ? <br /><br /> : null}
+                </>
+              )}
+              {post.frontmatter.description2 && (
+                <>
+                  {post.frontmatter.description2}
+                  {post.frontmatter.description3 ? <br /><br /> : null}
+                </>
+              )}
+              {post.frontmatter.description3 && (
+                <>
+                  {post.frontmatter.description3}
+                </>
+              )}
             </p>
           </div>
         </div>
