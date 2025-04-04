@@ -22,8 +22,8 @@ block2text: Unlock the potential of our extensive network in South Africa. We
 block3icon: file-text
 block3title: HR administration and documentation
 block3text: Let us take care of all HR administrative tasks. We will securely
-  store your employees' documentation in our easy-to-use Vista People database,
-  allowing you to access all necessary information with just a click.
+  store your employees' documentation in our Vista People database, allowing you
+  to focus on growing your company.
 block4title: Employee Benefits
 block4text: Your new employees will receive all mandatory benefits required in
   South Africa. At your discretion, you can also provide additional benefits
