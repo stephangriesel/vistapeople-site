@@ -29,6 +29,6 @@ block4text: Your new employees will receive all mandatory benefits required in
   South Africa. At your discretion, you can also provide additional benefits
   such as healthcare, insurance, and pension contributions. Moreover, you have
   the opportunity to enhance their experience with extra perks, including gym
-  memberships and wellness programs.  Copy Regenerate
+  memberships and wellness programs.
 layout: ../../../layouts/General.astro
 ---
