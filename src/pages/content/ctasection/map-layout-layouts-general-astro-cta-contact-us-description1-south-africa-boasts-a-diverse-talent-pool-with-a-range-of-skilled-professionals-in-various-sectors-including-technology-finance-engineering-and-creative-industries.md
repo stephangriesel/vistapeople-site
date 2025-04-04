@@ -1,11 +1,11 @@
 ---
 maintitle: Why South Africa
 title1: A Diverse and Skilled Talent Pool
-description1: South Africa is home to a rich tapestry of skilled professionals
-  across various industries, including technology, finance, engineering, and
-  creative sectors. Our educational system generates graduates who possess the
-  competencies needed to meet international standards, making it easier for your
-  business to source qualified talent.
+description1: South Africa is home to a variety of high quality, skilled
+  professionals across various industries, including technology, finance,
+  engineering, and creative sectors. Our educational system generates graduates
+  who possess the competencies needed to meet international standards, making it
+  easier for your business to source qualified talent.
 title2: Cost-Effective Workforce Solutions
 description2: With a lower cost of living compared to many Western nations,
   South Africa offers a workforce with more affordable wage expectations while
