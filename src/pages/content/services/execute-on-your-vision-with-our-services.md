@@ -3,7 +3,7 @@ block4icon: trophy
 titledescription: "We operate on a high touch client friendly approach, please
   contact us to have a conversation so we can understand your needs. "
 smalltext: Services
-title: Realize Your Vision with Our EOR Services
+title: Realize Your Potential with Our EOR Services
 description: At Vista People, we pride ourselves on a personalized,
   client-centric approach. Reach out to us to discuss your specific needs and
   explore how we can assist you.
