@@ -1,22 +1,22 @@
 ---
-title: Innovate
-description1: ""
-description2: "We help you set up remote working capacity in South Africa,
-  whether its one person while you test out the waters, or building a team of
-  hundred we are there to help you. "
-description3: At a fraction of the cost, but not compromising on quality, having
-  team members work remotely is an innovative way to move forward and increase
-  your margin.
-title2: Accelerate
-description4: "Vista People’s full service employer of record solution will
-  ensure a smooth hiring and onboarding process. With us you are compliant and
-  ready to operate in no time. "
-title3: Empower
-description5: "At Vista People we support companies to realise the dream of
-  having cost-effective, quality employees based in South Africa. We help you
-  understand how your company can benefit from innovative working solutions,
-  while we make sure all the legal, hr and tax related obstacles are taken care
-  of. "
+title: Unlock Growth Through Innovation
+description1: At Vista People, we turn innovation into opportunity—helping your
+  business scale and thrive with smart, remote workforce solutions.
+description2: Whether you're hiring your first remote team member or expanding
+  to a team of 100, we specialize in building high-performing teams based in
+  South Africa. Our end-to-end support ensures you have everything you need to
+  grow with confidence.
+description3: By enabling remote teams, we deliver an innovative solution that
+  improves your margins and drives long-term profitability.
+title2: Fast-Track Your Expansion
+description4: Vista People offers a seamless Employer of Record (EOR) solution
+  designed to simplify hiring and onboarding. From day one, we ensure full
+  compliance, so your team can hit the ground running.
+title3: Build a World-Class Team
+description5: "We empower businesses to access skilled, cost-effective
+  professionals in South Africa. Our team handles every detail—from legal and HR
+  to payroll and tax—so you can focus on what matters most: building your
+  vision."
 cta: "Let's talk "
 layout: ../../../layouts/General.astro
 ---
