@@ -12,8 +12,8 @@ description3: By enabling remote teams or individual workers, we deliver an
 title2: Fast-Track Your Expansion
 description4: Vista People offers a seamless Employer of Record (EOR) solution
   designed to simplify hiring and onboarding. From day one, we ensure full
-  compliance, so your team can hit the ground running.
-title3: Build a World-Class Team
+  compliance, so your team or individual worker, can hit the ground running.
+title3: Access World-Class Talent
 description5: "We empower businesses to access skilled, cost-effective
   professionals in South Africa. Our team handles every detail—from legal and HR
   to payroll and tax—so you can focus on what matters most: building your
