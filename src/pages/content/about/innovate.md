@@ -3,11 +3,12 @@ title: Unlock Growth Through Innovation
 description1: At Vista People, we turn innovation into opportunity—helping your
   business scale and thrive with smart, remote workforce solutions.
 description2: Whether you're hiring your first remote team member or expanding
-  to a team of 100, we specialize in building high-performing teams based in
-  South Africa. Our end-to-end support ensures you have everything you need to
-  grow with confidence.
-description3: By enabling remote teams, we deliver an innovative solution that
-  improves your margins and drives long-term profitability.
+  to a team of 100, we specialize in building high-performing teams or placing
+  individual workers, based in South Africa. Our end-to-end support ensures you
+  have everything you need to grow with confidence.
+description3: By enabling remote teams or individual workers, we deliver an
+  innovative solution that improves your margins and drives increased
+  profitability.
 title2: Fast-Track Your Expansion
 description4: Vista People offers a seamless Employer of Record (EOR) solution
   designed to simplify hiring and onboarding. From day one, we ensure full
