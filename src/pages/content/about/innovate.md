@@ -1,6 +1,6 @@
 ---
 title: Unlock Growth Through Innovation
-description1: At Vista People, we turn innovation into opportunity—helping your
+description1: At Vista People, we turn innovation into opportunity, helping your
   business scale and thrive with smart, remote workforce solutions.
 description2: Whether you're hiring your first remote team member or expanding
   to a team of 100, we specialize in building high-performing teams or placing
