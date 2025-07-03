@@ -16,7 +16,7 @@ description4: Vista People offers a seamless Employer of Record (EOR) solution
 title3: Access World-Class Talent
 description5: "We empower businesses to access skilled, cost-effective
   professionals in South Africa. Our team handles every detail, from legal and
-  HR to payroll and tax—so you can focus on what matters most: building your
+  HR to payroll and tax, so you can focus on what matters most: building your
   vision."
 cta: "Let's talk "
 layout: ../../../layouts/General.astro
