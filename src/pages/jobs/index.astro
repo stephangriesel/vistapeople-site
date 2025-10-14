@@ -1,0 +1,36 @@
+---
+// src/pages/jobs/index.astro
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/Layout.astro'; 
+
+const allJobs = await getCollection('jobs');
+const openJobs = allJobs
+  .filter(job => job.data.isOpen)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+<BaseLayout 
+  title="Careers" 
+  description="View all open positions and career opportunities at our company."
+>
+  <main class="container mx-auto px-4 py-12">
+    <h1 class="text-4xl font-bold mb-4">Open Positions</h1>
+    <p class="text-lg text-gray-600 mb-8">
+      We're looking for talented people to join our team. See our open roles below.
+    </p>
+
+    {openJobs.length > 0 ? (
+      <div class="space-y-4">
+        {openJobs.map(job => (
+          <a href={`/jobs/${job.slug}/`} class="block border border-gray-200 p-6 rounded-lg hover:shadow-md transition-shadow">
+            <h2 class="text-2xl font-semibold text-blue-700">{job.data.title}</h2>
+            <p class="text-gray-700 mt-2">{job.data.location} &bull; {job.data.type}</p>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <p class="bg-gray-100 p-6 rounded-lg">
+        We don't have any open positions at the moment. Please check back later!
+      </p>
+    )}
+  </main>
+</BaseLayout>

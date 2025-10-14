@@ -1,7 +1,11 @@
+// src/content/config.ts
+
 // 1. Import utilities from `astro:content`
 import { z, defineCollection } from 'astro:content';
 
 // 2. Define your collection(s)
+
+// Your existing blog collection
 const blogCollection = defineCollection({
   type: 'content',
   schema: z.object({
@@ -42,9 +46,24 @@ const blogCollection = defineCollection({
   }),
 });
 
+// START: Add the new jobs collection definition
+const jobsCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    // The datetime widget in Decap CMS works directly with the z.date() type
+    pubDate: z.date(),
+    location: z.string(),
+    type: z.enum(["Full-time", "Part-time", "Contract", "Internship"]),
+    isOpen: z.boolean().default(true),
+  }),
+});
+// END: New jobs collection definition
+
 
 // 3. Export a single `collections` object to register your collection(s)
 //    This key should match your collection directory name in "src/content"
 export const collections = {
   'blog': blogCollection,
+  'jobs': jobsCollection, // <-- ADD THE JOBS COLLECTION HERE
 };

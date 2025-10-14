@@ -1,8 +1,11 @@
 ---
+import { getCollection } from 'astro:content'; 
+import { marked } from 'marked';
 import About from '../components/Aboutsection.astro';
 import AboutContinue from '../components/AboutsectionContinue.astro';
 import Features from '../components/Features.astro';
 import Hero from '../components/Hero.astro';
+import Jobs from '../components/Jobs.astro';
 // import Testimonials from '../components/Testimonials.astro';
 import Layout from '../layouts/Layout.astro';
 import Contact from '../components/Contactsection.astro';
@@ -40,6 +43,19 @@ allTestimonials = allTestimonials.sort(
     new Date(b.frontmatter.publishDate).valueOf() -
     new Date(a.frontmatter.publishDate).valueOf()
 );
+
+const allJobs = await getCollection('jobs');
+const openJobs = await Promise.all(
+  allJobs
+    .filter(job => job.data.isOpen)
+    .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf())
+    .map(async (job) => {
+      return {
+        ...job,
+        htmlBody: await marked.parse(job.body),
+      };
+    })
+);
 ---
 
 <Layout
@@ -56,6 +72,7 @@ allTestimonials = allTestimonials.sort(
   <!-- <Faq /> -->
   <!-- <Team /> -->
   <!-- <Blogsection /> -->
+   <!-- <Jobs jobs={openJobs} /> -->
   <Contact />
   <!-- <Clients /> -->
 </Layout>

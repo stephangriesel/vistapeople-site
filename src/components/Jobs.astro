@@ -1,0 +1,104 @@
+---
+// src/components/Jobs.astro
+export interface Props {
+  jobs: any[];
+}
+const { jobs } = Astro.props;
+
+// Pass the prepared jobs data to the client-side script
+const jobsJSON = JSON.stringify(jobs);
+---
+
+<section id="jobs" class="pt-20 pb-12 lg:pt-[120px] lg:pb-[90px] dark:bg-dark">
+  <div class="container mx-auto">
+    <div class="mb-12 max-w-[510px] mx-auto text-center lg:mb-[70px]">
+      <span class="mb-2 block text-lg font-semibold text-primary">
+        Join Our Team
+      </span>
+      <h2 class="mb-4 text-3xl font-bold text-dark dark:text-white sm:text-4xl md:text-[40px]">
+        Open Positions
+      </h2>
+      <p class="text-base text-body-color dark:text-dark-6">
+        We're looking for passionate individuals to help us achieve our mission.
+      </p>
+    </div>
+
+    <div class="max-w-3xl mx-auto relative min-h-[300px]">
+      
+      <div id="job-grid" class="space-y-4 transition-opacity duration-300">
+        {jobs.length > 0 ? (
+          jobs.map((job, index) => (
+            <div
+              class="group block bg-white dark:bg-dark-2 border border-gray-200 dark:border-dark-3 rounded-lg p-6 cursor-pointer transition duration-300 ease-in-out hover:border-primary hover:shadow-lg"
+              data-job-index={index}
+            >
+              <h3 class="text-xl font-bold text-dark dark:text-white transition-colors group-hover:text-primary">
+                {job.data.title}
+              </h3>
+              <p class="text-base text-body-color dark:text-dark-6">
+                {job.data.location} &bull; {job.data.type}
+              </p>
+            </div>
+          ))
+        ) : (
+          <div class="text-center bg-gray-100 dark:bg-dark-2 p-6 rounded-lg">
+            <p class="text-base text-body-color dark:text-dark-6">
+              We don't have any open positions at the moment.
+            </p>
+          </div>
+        )}
+      </div>
+
+      <div id="job-detail-view" class="absolute inset-0 transition-opacity duration-300 opacity-0 pointer-events-none">
+        <button id="back-to-jobs" class="mb-6 inline-flex items-center gap-2 text-primary font-bold hover:underline">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm36.24-87.76-48-48a8,8,0,0,0-11.32,0,8,8,0,0,0,0,11.32L131.34,120H88a8,8,0,0,0,0,16h43.34l-26.42,26.44a8,8,0,0,0,11.32,11.32l48-48A8,8,0,0,0,164.24,128.24Z"></path></svg>
+          Back to all positions
+        </button>
+        <div id="job-detail-content" class="prose lg:prose-xl max-w-none dark:prose-invert bg-white dark:bg-dark-2 border border-gray-200 dark:border-dark-3 rounded-lg p-6">
+          </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ jobsJSON }}>
+  // This script follows the exact same logic as your example
+  const jobs = JSON.parse(jobsJSON);
+  const jobGrid = document.getElementById('job-grid');
+  const detailView = document.getElementById('job-detail-view');
+  const detailContent = document.getElementById('job-detail-content');
+  const backButton = document.getElementById('back-to-jobs');
+  const jobCards = document.querySelectorAll('[data-job-index]');
+
+  jobCards.forEach(card => {
+    card.addEventListener('click', () => {
+      const jobIndex = parseInt(card.dataset.jobIndex, 10);
+      const job = jobs[jobIndex];
+
+      if (job) {
+        // Build the HTML for the detail view
+        detailContent.innerHTML = `
+          <h2>${job.data.title}</h2>
+          <p><strong>Location:</strong> ${job.data.location} | <strong>Type:</strong> ${job.data.type}</p>
+          <hr>
+          ${job.htmlBody}
+        `;
+
+        // Hide the grid and show the details
+        jobGrid.style.opacity = '0';
+        jobGrid.style.pointerEvents = 'none';
+        detailView.style.opacity = '1';
+        detailView.style.pointerEvents = 'auto';
+      }
+    });
+  });
+
+  backButton.addEventListener('click', () => {
+    // Hide the details and show the grid
+    detailView.style.opacity = '0';
+    detailView.style.pointerEvents = 'none';
+    jobGrid.style.opacity = '1';
+    jobGrid.style.pointerEvents = 'auto';
+  });
+</script>
