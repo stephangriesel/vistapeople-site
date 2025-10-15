@@ -1,32 +1,26 @@
+// tailwind.config.mjs
+
 /** @type {import('tailwindcss').Config} */
-
-const colors = require('tailwindcss/colors');
-
-module.exports = {
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+export default {
+  content: [
+    './src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
+    './node_modules/flowbite/**/*.js', // For Flowbite components
+  ],
   darkMode: "class",
-	theme: {
+  theme: {
     screens: {
       sm: "540px",
-      // => @media (min-width: 576px) { ... }
-
       md: "720px",
-      // => @media (min-width: 768px) { ... }
-
       lg: "960px",
-      // => @media (min-width: 992px) { ... }
-
       xl: "1140px",
-      // => @media (min-width: 1200px) { ... }
-
       "2xl": "1320px",
-      // => @media (min-width: 1400px) { ... }
     },
     container: {
       center: true,
       padding: "16px",
     },
     extend: {
+      // Merged colors from your theme
       colors: {
         white: "#FFFFFF",
         black: "#212b36",
@@ -52,6 +46,7 @@ module.exports = {
         "gray-2": "#F3F4F6",
         "gray-7": "#CED4DA",
       },
+      // Merged box shadows
       boxShadow: {
         input: "0px 7px 20px rgba(0, 0, 0, 0.03)",
         form: "0px 1px 55px -11px rgba(0, 0, 0, 0.01)",
@@ -62,7 +57,30 @@ module.exports = {
         1: "0px 1px 3px 0px rgba(166, 175, 195, 0.40)",
         2: "0px 5px 12px 0px rgba(0, 0, 0, 0.10)",
       },
+      // Merged fonts and other extensions
+      fontFamily: {
+        fira: ['Fira Sans', 'sans-serif'],
+        pathway: ['Pathway Gothic One', 'sans-serif'],
+        roboto: ['Roboto', 'sans-serif'],
+      },
+      aria: {
+        current: "current=page",
+      },
+      width: {
+        128: "32rem",
+      },
+      keyframes: {
+        fade: {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
+      },
+      animation: {
+        "fade-in": "fade 2s linear",
+      },
     },
   },
-	plugins: [],
-}
+  plugins: [
+    require('@tailwindcss/typography'), // This provides the 'prose' class
+  ],
+};
