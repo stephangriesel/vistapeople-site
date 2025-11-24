@@ -8,19 +8,12 @@ const menuitems = [
   { title: "Pages", path: "javascript:void(0)", children: [] },
 ];
 
-// LOGIC FIX: Determine current page state once
 const isHome = Astro.url.pathname === "/";
 
-// Define dynamic classes based on location
-// If Home: Text is White.
-// If Not Home: Text is Dark (on light mode) or White (on dark mode).
 const navLinkColorClass = isHome 
   ? "text-white hover:opacity-70" 
   : "text-dark dark:text-white hover:text-primary";
 
-// Fix for Hamburger Menu Bars:
-// If Home: Bars are White.
-// If Not Home: Bars are Dark (Light mode) or White (Dark mode).
 const hamburgerColorClass = isHome 
   ? "bg-white" 
   : "bg-dark dark:bg-white";
@@ -86,12 +79,54 @@ const hamburgerColorClass = isHome
             id="themeSwitcher"
           >
            <span class={`hidden dark:block ${navLinkColorClass}`}>
-              </span>
+             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 18V6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
             <span class={`block dark:hidden ${navLinkColorClass}`}>
-               </span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
           </button>
         </div>
       </div>
     </div>
   </div>
 </header>
+
+<style>
+  /* === STICKY HEADER OVERRIDES ===
+   This CSS forces the header to be DARK when you scroll down.
+   It overrides the default JS behavior (which usually makes it white).
+  */
+
+  /* 1. Force Background to be Dark Gray (matches your dark theme) */
+  :global(.sticky-header) {
+    background-color: #111928 !important; 
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  /* 2. Force Logo Text to be White */
+  :global(.sticky-header) .header-logo,
+  :global(.sticky-header) .fira-sans-text {
+    color: #ffffff !important;
+  }
+
+  /* 3. Force Menu Links to be White */
+  :global(.sticky-header) #navbarCollapse li > a {
+    color: #ffffff !important;
+  }
+  
+  /* 4. Force Hamburger Menu Lines to be White */
+  :global(.sticky-header) #navbarToggler span {
+    background-color: #ffffff !important;
+  }
+  
+  /* 5. Force Theme Switcher Icon to be White */
+  :global(.sticky-header) #themeSwitcher span {
+    color: #ffffff !important;
+  }
+</style>
