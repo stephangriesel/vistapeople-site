@@ -12,8 +12,12 @@ const menuitems = [
 const isHome = Astro.url.pathname === "/";
 
 const navLinkColorClass = isHome
+  ? "text-black dark:text-white lg:text-white hover:opacity-70"
+  : "text-black dark:text-white hover:text-primary";
+
+const themeSwitcherColorClass = isHome
   ? "text-white hover:opacity-70"
-  : "text-dark dark:text-white hover:text-primary";
+  : "text-black dark:text-white hover:text-primary";
 
 const hamburgerColorClass = isHome ? "bg-white" : "bg-dark dark:bg-white";
 ---
@@ -88,7 +92,7 @@ const hamburgerColorClass = isHome ? "bg-white" : "bg-dark dark:bg-white";
             class="inline-flex cursor-pointer items-center"
             id="themeSwitcher"
           >
-            <span class={`hidden dark:block ${navLinkColorClass}`}>
+            <span class={`hidden dark:block ${themeSwitcherColorClass}`}>
               <svg
                 width="24"
                 height="24"
@@ -96,21 +100,25 @@ const hamburgerColorClass = isHome ? "bg-white" : "bg-dark dark:bg-white";
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path
-                  d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                <g
                   stroke="currentColor"
                   stroke-width="2"
                   stroke-linecap="round"
-                  stroke-linejoin="round"></path>
-                <path
-                  d="M12 18V6"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"></path>
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="5"></circle>
+                  <path d="M12 1v2"></path>
+                  <path d="M12 21v2"></path>
+                  <path d="M4.22 4.22l1.42 1.42"></path>
+                  <path d="M18.36 18.36l1.42 1.42"></path>
+                  <path d="M1 12h2"></path>
+                  <path d="M21 12h2"></path>
+                  <path d="M4.22 19.78l1.42-1.42"></path>
+                  <path d="M18.36 5.64l1.42-1.42"></path>
+                </g>
               </svg>
             </span>
-            <span class={`block dark:hidden ${navLinkColorClass}`}>
+            <span class={`block dark:hidden ${themeSwitcherColorClass}`}>
               <svg
                 width="24"
                 height="24"
@@ -152,9 +160,11 @@ const hamburgerColorClass = isHome ? "bg-white" : "bg-dark dark:bg-white";
     color: #ffffff !important;
   }
 
-  /* 3. Force Menu Links to be White */
-  :global(.sticky-header) #navbarCollapse li > a {
-    color: #ffffff !important;
+  /* 3. Force Menu Links to be White (Desktop Only) */
+  @media (min-width: 1024px) {
+    :global(.sticky-header) #navbarCollapse li > a {
+      color: #ffffff !important;
+    }
   }
 
   /* 4. Force Hamburger Menu Lines to be White */
