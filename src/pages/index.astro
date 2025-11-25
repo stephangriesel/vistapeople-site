@@ -1,78 +1,62 @@
 ---
-import { getCollection } from 'astro:content'; 
-import { marked } from 'marked';
-import About from '../components/Aboutsection.astro';
-import AboutContinue from '../components/AboutsectionContinue.astro';
-import Features from '../components/Features.astro';
-import Hero from '../components/Hero.astro';
-import Jobs from '../components/Jobs.astro';
+import { getCollection } from "astro:content";
+import { marked } from "marked";
+import About from "../components/Aboutsection.astro";
+import AboutContinue from "../components/AboutsectionContinue.astro";
+import Features from "../components/Features.astro";
+import Hero from "../components/Hero.astro";
+import Careers from "../components/Careers.astro";
 // import Testimonials from '../components/Testimonials.astro';
-import Layout from '../layouts/Layout.astro';
-import Contact from '../components/Contactsection.astro';
-import CTA from '../components/CTAsection.astro';
+import Layout from "../layouts/Layout.astro";
+import Contact from "../components/Contactsection.astro";
+import CTA from "../components/CTAsection.astro";
 
 let allHero = await Astro.glob("./content/hero/*.md");
 allHero = allHero.sort(
   (a, b) =>
     new Date(b.frontmatter.publishDate).valueOf() -
-    new Date(a.frontmatter.publishDate).valueOf()
+    new Date(a.frontmatter.publishDate).valueOf(),
 );
 
 let allAbout = await Astro.glob("./content/about/*.md");
 allAbout = allAbout.sort(
   (a, b) =>
     new Date(b.frontmatter.publishDate).valueOf() -
-    new Date(a.frontmatter.publishDate).valueOf()
+    new Date(a.frontmatter.publishDate).valueOf(),
 );
 let allServices = await Astro.glob("./content/services/*.md");
 allServices = allServices.sort(
   (a, b) =>
     new Date(b.frontmatter.publishDate).valueOf() -
-    new Date(a.frontmatter.publishDate).valueOf()
+    new Date(a.frontmatter.publishDate).valueOf(),
 );
 let allCtaSection = await Astro.glob("./content/ctasection/*.md");
 allCtaSection = allCtaSection.sort(
   (a, b) =>
     new Date(b.frontmatter.publishDate).valueOf() -
-    new Date(a.frontmatter.publishDate).valueOf()
+    new Date(a.frontmatter.publishDate).valueOf(),
 );
 
 let allTestimonials = await Astro.glob("./content/testimonials/*.md");
 allTestimonials = allTestimonials.sort(
   (a, b) =>
     new Date(b.frontmatter.publishDate).valueOf() -
-    new Date(a.frontmatter.publishDate).valueOf()
-);
-
-const allJobs = await getCollection('jobs');
-const openJobs = await Promise.all(
-  allJobs
-    .filter(job => job.data.isOpen)
-    .sort((a, b) => new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf())
-    .map(async (job) => {
-      return {
-        ...job,
-        htmlBody: await marked.parse(job.body),
-      };
-    })
+    new Date(a.frontmatter.publishDate).valueOf(),
 );
 ---
 
-<Layout
-  description="Let's talk about growth"
-  title="VistaPeople"
->
-  <Hero post={allHero[0]}/>
+<Layout description="Let's talk about growth" title="VistaPeople">
+  <Hero post={allHero[0]} />
   <About post={allAbout[0]} />
   <AboutContinue post={allAbout[0]} />
   <Features post={allServices[0]} />
-  <CTA post={allCtaSection[0]}/>
+  <CTA post={allCtaSection[0]} />
   <!-- <Pricing /> -->
   <!-- <Testimonials post={allTestimonials[0]} /> -->
   <!-- <Faq /> -->
   <!-- <Team /> -->
   <!-- <Blogsection /> -->
-   <!-- <Jobs jobs={openJobs} /> -->
+  <!-- <Careers /> -->
   <Contact />
   <!-- <Clients /> -->
 </Layout>

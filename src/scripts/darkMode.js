@@ -9,16 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initial Theme Check
   const themeCheck = () => {
-    if (userTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else if (userTheme === 'light') {
+    if (userTheme === 'light') {
       document.documentElement.classList.remove('dark');
     } else {
-      if (systemTheme) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
+      // Default to dark for 'dark' or null (first visit)
+      document.documentElement.classList.add('dark');
     }
   };
 

@@ -5,18 +5,17 @@ const menuitems = [
   { title: "Services", path: "/#services" },
   { title: "Why", path: "/#why" },
   { title: "Contact", path: "/#contact" },
+  // { title: "Careers", path: "/#careers" },
   { title: "Pages", path: "javascript:void(0)", children: [] },
 ];
 
 const isHome = Astro.url.pathname === "/";
 
-const navLinkColorClass = isHome 
-  ? "text-white hover:opacity-70" 
+const navLinkColorClass = isHome
+  ? "text-white hover:opacity-70"
   : "text-dark dark:text-white hover:text-primary";
 
-const hamburgerColorClass = isHome 
-  ? "bg-white" 
-  : "bg-dark dark:bg-white";
+const hamburgerColorClass = isHome ? "bg-white" : "bg-dark dark:bg-white";
 ---
 
 <header
@@ -26,24 +25,35 @@ const hamburgerColorClass = isHome
     <div class="relative -mx-4 flex items-center justify-between my-5">
       <div class="flex max-w-full px-4">
         <div>
-          <a href="/" class="navbar-logo flex items-center whitespace-nowrap w-full">
-            <span class="header-logo text-white roboto-bold-900 text-4xl">Vista</span>
+          <a
+            href="/"
+            class="navbar-logo flex items-center whitespace-nowrap w-full"
+          >
+            <span class="header-logo text-white roboto-bold-900 text-4xl"
+              >Vista</span
+            >
             <span class="fira-sans-text text-white text-4xl">People</span>
           </a>
         </div>
       </div>
-      
+
       <div class="flex w-full items-center justify-evenly px-4">
         <div>
           <button
             id="navbarToggler"
             class="absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 ring-primary focus:ring-2 lg:hidden"
           >
-            <span class={`relative my-[6px] block h-[2px] w-[30px] ${hamburgerColorClass}`}></span>
-            <span class={`relative my-[6px] block h-[2px] w-[30px] ${hamburgerColorClass}`}></span>
-            <span class={`relative my-[6px] block h-[2px] w-[30px] ${hamburgerColorClass}`}></span>
+            <span
+              class={`relative my-[6px] block h-[2px] w-[30px] ${hamburgerColorClass}`}
+            ></span>
+            <span
+              class={`relative my-[6px] block h-[2px] w-[30px] ${hamburgerColorClass}`}
+            ></span>
+            <span
+              class={`relative my-[6px] block h-[2px] w-[30px] ${hamburgerColorClass}`}
+            ></span>
           </button>
-          
+
           <nav
             id="navbarCollapse"
             class="absolute right-4 top-full hidden w-full max-w-[250px] rounded-lg bg-white dark:bg-dark-2 py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent dark:lg:bg-transparent lg:py-0 xl:px-4 lg:shadow-none 2xl:px-6"
@@ -72,21 +82,48 @@ const hamburgerColorClass = isHome
             </ul>
           </nav>
         </div>
-        
+
         <div class="justify-end pr-16 flex items-center lg:pr-0">
           <button
             class="inline-flex cursor-pointer items-center"
             id="themeSwitcher"
           >
-           <span class={`hidden dark:block ${navLinkColorClass}`}>
-             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M12 18V6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <span class={`hidden dark:block ${navLinkColorClass}`}>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+                <path
+                  d="M12 18V6"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
               </svg>
             </span>
             <span class={`block dark:hidden ${navLinkColorClass}`}>
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
               </svg>
             </span>
           </button>
@@ -104,7 +141,7 @@ const hamburgerColorClass = isHome
 
   /* 1. Force Background to be Dark Gray (matches your dark theme) */
   :global(.sticky-header) {
-    background-color: #111928 !important; 
+    background-color: rgba(17, 25, 40, 0.8) !important;
     backdrop-filter: blur(5px);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   }
@@ -119,12 +156,12 @@ const hamburgerColorClass = isHome
   :global(.sticky-header) #navbarCollapse li > a {
     color: #ffffff !important;
   }
-  
+
   /* 4. Force Hamburger Menu Lines to be White */
   :global(.sticky-header) #navbarToggler span {
     background-color: #ffffff !important;
   }
-  
+
   /* 5. Force Theme Switcher Icon to be White */
   :global(.sticky-header) #themeSwitcher span {
     color: #ffffff !important;
