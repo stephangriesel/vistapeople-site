@@ -1,0 +1,98 @@
+---
+// src/components/Careers.astro
+---
+
+<section
+  id="careers"
+  class="pt-20 pb-12 lg:pt-[120px] lg:pb-[90px] dark:bg-dark"
+>
+  <div class="container mx-auto">
+    <div class="mb-12 max-w-[510px] mx-auto text-center lg:mb-[70px]">
+      <span class="mb-2 block text-lg font-semibold text-primary">
+        Join Our Team
+      </span>
+      <h2
+        class="mb-4 text-3xl font-bold text-dark dark:text-white sm:text-4xl md:text-[40px]"
+      >
+        Careers
+      </h2>
+      <p class="text-base text-body-color dark:text-dark-6">
+        Our clients are mostly foreign companies across Europe, the UK and the
+        USA, wanting to work with South African professionals, remotely.
+      </p>
+    </div>
+
+    <div class="max-w-3xl mx-auto">
+      <div
+        class="bg-white dark:bg-dark-2 border border-gray-200 dark:border-dark-3 rounded-lg p-8 shadow-lg"
+      >
+        <form
+          name="careers-interest"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+        >
+          <input type="hidden" name="form-name" value="careers-interest" />
+          <p class="hidden">
+            <label
+              >Don’t fill this out if you’re human: <input
+                name="bot-field"
+              /></label>
+          </p>
+
+          <div class="space-y-6">
+            <div>
+              <label
+                for="name"
+                class="block mb-2 text-sm font-medium text-dark dark:text-white"
+                >Name and Surname</label
+              >
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="w-full p-3 rounded-lg bg-gray-50 dark:bg-dark-3 border border-stroke dark:border-dark-4 focus:border-primary focus:outline-none transition-colors"
+                required
+              />
+            </div>
+
+            <div>
+              <label
+                for="email"
+                class="block mb-2 text-sm font-medium text-dark dark:text-white"
+                >Email Address</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="w-full p-3 rounded-lg bg-gray-50 dark:bg-dark-3 border border-stroke dark:border-dark-4 focus:border-primary focus:outline-none transition-colors"
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="w-full font-bold py-3 px-6 rounded-lg bg-primary text-white hover:bg-blue-dark transition-colors"
+            >
+              Submit Interest
+            </button>
+          </div>
+        </form>
+
+        <div
+          class="mt-8 text-center border-t border-gray-200 dark:border-dark-3 pt-6"
+        >
+          <p class="text-base text-body-color dark:text-dark-6">
+            Also remember to follow our <a
+              href="https://www.linkedin.com/company/vistapeople"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-primary hover:underline">LinkedIn page</a
+            > for up to date developments.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
