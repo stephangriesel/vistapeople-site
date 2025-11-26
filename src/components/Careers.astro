@@ -94,6 +94,7 @@ const { post } = Astro.props;
                           name="fields[name]"
                           placeholder="Full Name"
                           autocomplete="given-name"
+                          required
                         />
                         <!-- /input -->
                       </div>
@@ -116,6 +117,7 @@ const { post } = Astro.props;
                           name="fields[email]"
                           placeholder="Email"
                           autocomplete="email"
+                          required
                         />
                         <!-- /input -->
                       </div>
@@ -215,6 +217,13 @@ const { post } = Astro.props;
     form.addEventListener("submit", function (e) {
       e.preventDefault();
 
+      // Validate reCAPTCHA
+      var recaptchaResponse = grecaptcha.getResponse();
+      if (!recaptchaResponse) {
+        alert("Please complete the reCAPTCHA verification.");
+        return;
+      }
+
       var submitBtn = form.querySelector('button[type="submit"]');
       var loadingBtn = form.querySelector("button.loading");
 
@@ -233,6 +242,13 @@ const { post } = Astro.props;
 
       var script = document.createElement("script");
       script.src = form.action + "?" + params.toString();
+
+      script.onerror = function () {
+        alert("Something went wrong. Please try again later.");
+        if (submitBtn) submitBtn.style.display = "block";
+        if (loadingBtn) loadingBtn.style.display = "none";
+      };
+
       document.body.appendChild(script);
     });
   });
