@@ -185,16 +185,36 @@ const { post } = Astro.props;
 </section>
 
 <script is:inline>
-  function ml_webform_success_33805085() {
+  function ml_webform_success_33805085(data) {
+    // Debugging: Log the response data
+    console.log("MailerLite Response:", data);
+
     var formContainer = document.querySelector(".ml-subscribe-form-33805085");
     if (!formContainer) return;
 
     var formRow = formContainer.querySelector(".row-form");
     var successRow = formContainer.querySelector(".row-success");
+    var form = formContainer.querySelector("form");
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var loadingBtn = form.querySelector("button.loading");
 
-    if (formRow && successRow) {
-      formRow.style.display = "none";
-      successRow.style.display = "block";
+    // Check if the submission was successful
+    if (data && data.success) {
+      if (formRow && successRow) {
+        formRow.style.display = "none";
+        successRow.style.display = "block";
+      }
+    } else {
+      // Handle error
+      console.error("MailerLite Submission Error:", data);
+      alert(
+        "Something went wrong. Please check your details and try again.\n" +
+          (data && data.errors ? JSON.stringify(data.errors) : ""),
+      );
+
+      // Reset buttons
+      if (submitBtn) submitBtn.style.display = "block";
+      if (loadingBtn) loadingBtn.style.display = "none";
     }
   }
 
