@@ -352,19 +352,41 @@ export default defineConfig({
               },
             ],
           },
-                    {
-            name: "jobs",
-            label: "Job Postings",
-            folder: "src/content/jobs", 
+          {
+            name: "careers",
+            label: "Careers",
+            label_singular: "careers",
+            folder: "src/pages/content/careers",
             create: true,
-            slug: "{{slug}}",
+            delete: true,
             fields: [
-              { label: "Position Title", name: "title", widget: "string" },
-              { label: "Publish Date", name: "pubDate", widget: "datetime" },
-              { label: "Location", name: "location", widget: "string", default: "Remote" },
-              { label: "Job Type", name: "type", widget: "select", options: ["Full-time", "Part-time", "Contract", "Internship"] },
-              { label: "Is this position open?", name: "isOpen", widget: "boolean", default: true },
-              { label: "Description", name: "body", widget: "markdown" },
+              { name: "title", widget: "string", label: "Title", default: "Careers" },
+              { name: "subtitle", widget: "string", label: "Subtitle", default: "Join the maillist" },
+              {
+                name: "description1",
+                widget: "string",
+                label: "Paragraph 1",
+                required: false,
+                default: "Our clients are mostly foreign companies across Europe, the UK and the USA, wanting to work with South African professionals, remotely."
+              },
+              {
+                name: "description2",
+                widget: "string",
+                label: "Paragraph 2",
+                required: false,
+                default: "Leave your details below and we’ll let you know when opportunities become available."
+              },
+              {
+                name: "layout",
+                widget: "select",
+                default: "../../../layouts/General.astro",
+                options: [
+                  {
+                    label: "General",
+                    value: "../../../layouts/General.astro",
+                  },
+                ],
+              },
             ],
           },
         ],
