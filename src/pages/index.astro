@@ -43,6 +43,12 @@ allTestimonials = allTestimonials.sort(
     new Date(b.frontmatter.publishDate).valueOf() -
     new Date(a.frontmatter.publishDate).valueOf(),
 );
+let allCareers = await Astro.glob("./content/careers/*.md");
+allCareers = allCareers.sort(
+  (a, b) =>
+    new Date(b.frontmatter.publishDate).valueOf() -
+    new Date(a.frontmatter.publishDate).valueOf(),
+);
 ---
 
 <Layout description="Let's talk about growth" title="VistaPeople">
@@ -51,12 +57,6 @@ allTestimonials = allTestimonials.sort(
   <AboutContinue post={allAbout[0]} />
   <Features post={allServices[0]} />
   <CTA post={allCtaSection[0]} />
-  <!-- <Pricing /> -->
-  <!-- <Testimonials post={allTestimonials[0]} /> -->
-  <!-- <Faq /> -->
-  <!-- <Team /> -->
-  <!-- <Blogsection /> -->
-  <!-- <Careers /> -->
+  <Careers post={allCareers[0]} />
   <Contact />
-  <!-- <Clients /> -->
 </Layout>
