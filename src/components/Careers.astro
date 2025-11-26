@@ -32,6 +32,32 @@ const { post } = Astro.props;
       <div
         class="bg-white dark:bg-dark-2 border border-gray-200 dark:border-dark-3 rounded-lg p-8 shadow-lg"
       >
+        <style>
+          .ml-form-embedSubmitLoad {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+          }
+          .ml-form-embedSubmitLoad:after {
+            content: " ";
+            display: block;
+            width: 11px;
+            height: 11px;
+            margin: 1px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            border-color: #ffffff #ffffff #ffffff transparent;
+            animation: ml-form-embedSubmitLoad 1.2s linear infinite;
+          }
+          @keyframes ml-form-embedSubmitLoad {
+            0% {
+              transform: rotate(0deg);
+            }
+            100% {
+              transform: rotate(360deg);
+            }
+          }
+        </style>
         <div
           id="mlb2-33805085"
           class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-33805085"
@@ -58,19 +84,20 @@ const { post } = Astro.props;
                           class="block mb-2 text-sm font-medium text-dark dark:text-white"
                           >Full Name</label
                         >
+                        <!-- input -->
                         <input
                           aria-label="name"
                           aria-required="true"
                           type="text"
-                          class="form-control w-full p-3 rounded-lg bg-gray-50 dark:bg-dark-3 border border-stroke dark:border-dark-4 focus:border-primary focus:outline-none transition-colors"
+                          class="w-full p-3 rounded-lg bg-gray-50 dark:bg-dark-3 border border-stroke dark:border-dark-4 focus:border-primary focus:outline-none transition-colors"
                           data-inputmask=""
                           name="fields[name]"
                           placeholder="Full Name"
                           autocomplete="given-name"
                         />
+                        <!-- /input -->
                       </div>
-                    </div>
-                    <div class="ml-form-fieldRow ml-last-item">
+                    </div><div class="ml-form-fieldRow ml-last-item">
                       <div
                         class="ml-field-group ml-field-email ml-validate-email ml-validate-required"
                       >
@@ -79,26 +106,30 @@ const { post } = Astro.props;
                           class="block mb-2 text-sm font-medium text-dark dark:text-white"
                           >Email Address</label
                         >
+                        <!-- input -->
                         <input
                           aria-label="email"
                           aria-required="true"
                           type="email"
-                          class="form-control w-full p-3 rounded-lg bg-gray-50 dark:bg-dark-3 border border-stroke dark:border-dark-4 focus:border-primary focus:outline-none transition-colors"
+                          class="w-full p-3 rounded-lg bg-gray-50 dark:bg-dark-3 border border-stroke dark:border-dark-4 focus:border-primary focus:outline-none transition-colors"
                           data-inputmask=""
                           name="fields[email]"
                           placeholder="Email"
                           autocomplete="email"
                         />
+                        <!-- /input -->
                       </div>
                     </div>
                   </div>
 
                   <div class="ml-form-recaptcha ml-validate-required mt-6 mb-6">
-                    <script src="https://www.google.com/recaptcha/api.js"
-                    ></script>
+                    <script
+                      is:inline
+                      src="https://www.google.com/recaptcha/api.js"></script>
                     <div
                       class="g-recaptcha"
                       data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"
+                      data-theme="dark"
                     >
                     </div>
                   </div>
@@ -108,10 +139,11 @@ const { post } = Astro.props;
                   <div class="ml-form-embedSubmit mt-6">
                     <button
                       type="submit"
-                      class="primary w-full font-bold py-3 px-6 rounded-lg bg-primary text-white hover:bg-blue-dark transition-colors"
+                      class="w-full font-bold py-3 px-6 rounded-lg bg-primary text-white hover:bg-blue-dark transition-colors"
                     >
-                      Submit Interest
+                      Subscribe
                     </button>
+
                     <button
                       disabled="disabled"
                       style="display: none;"
@@ -126,80 +158,82 @@ const { post } = Astro.props;
                   <input type="hidden" name="anticsrf" value="true" />
                 </form>
               </div>
-            </div>
 
-            <div class="ml-form-successBody row-success" style="display: none">
-              <div class="ml-form-successContent text-center">
-                <h4 class="mb-4 text-2xl font-bold text-dark dark:text-white">
-                  Thank you!
-                </h4>
-                <p class="text-base text-body-color dark:text-dark-6">
-                  You have successfully joined our subscriber list.
-                </p>
+              <div
+                class="ml-form-successBody row-success"
+                style="display: none"
+              >
+                <div class="ml-form-successContent text-center">
+                  <h4 class="mb-4 text-2xl font-bold text-dark dark:text-white">
+                    Thank you!
+                  </h4>
+
+                  <p class="text-base text-body-color dark:text-dark-6">
+                    You have successfully joined our subscriber list.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <script is:inline src="https://code.jquery.com/jquery-3.7.1.min.js"
-      ></script>
-      <script is:inline>
-        function ml_webform_success_33805085() {
-          var $ = ml_jQuery || jQuery;
-          $(".ml-subscribe-form-33805085 .row-success").show();
-          $(".ml-subscribe-form-33805085 .row-form").hide();
-        }
-      </script>
-      <script
-        is:inline
-        src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024"
-        type="text/javascript"></script>
-      <script is:inline>
-        fetch(
-          "https://assets.mailerlite.com/jsonp/1943409/forms/172040872652702748/takel",
-        );
-      </script>
-
-      <style>
-        .ml-form-embedSubmitLoad {
-          display: inline-block;
-          width: 20px;
-          height: 20px;
-        }
-        .ml-form-embedSubmitLoad:after {
-          content: " ";
-          display: block;
-          width: 11px;
-          height: 11px;
-          margin: 1px;
-          border-radius: 50%;
-          border: 4px solid #fff;
-          border-color: #ffffff #ffffff #ffffff transparent;
-          animation: ml-form-embedSubmitLoad 1.2s linear infinite;
-        }
-        @keyframes ml-form-embedSubmitLoad {
-          0% {
-            transform: rotate(0deg);
-          }
-          100% {
-            transform: rotate(360deg);
-          }
-        }
-      </style>
-
-      <div
-        class="mt-8 text-center border-t border-gray-200 dark:border-dark-3 pt-6"
-      >
-        <p class="text-base text-body-color dark:text-dark-6">
-          Also remember to follow our <a
-            href="https://www.linkedin.com/company/vistapeople"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-primary hover:underline">LinkedIn page</a
-          > for up to date developments.
-        </p>
+        <div
+          class="mt-8 text-center border-t border-gray-200 dark:border-dark-3 pt-6"
+        >
+          <p class="text-base text-body-color dark:text-dark-6">
+            Also remember to follow our <a
+              href="https://www.linkedin.com/company/vistapeople"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-primary hover:underline">LinkedIn page</a
+            > for up to date developments.
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<script is:inline>
+  function ml_webform_success_33805085() {
+    var formContainer = document.querySelector(".ml-subscribe-form-33805085");
+    if (!formContainer) return;
+
+    var formRow = formContainer.querySelector(".row-form");
+    var successRow = formContainer.querySelector(".row-success");
+
+    if (formRow && successRow) {
+      formRow.style.display = "none";
+      successRow.style.display = "block";
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var form = document.querySelector(".ml-subscribe-form-33805085 form");
+    if (!form) return;
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var loadingBtn = form.querySelector("button.loading");
+
+      if (submitBtn) submitBtn.style.display = "none";
+      if (loadingBtn) loadingBtn.style.display = "block";
+
+      var formData = new FormData(form);
+      var params = new URLSearchParams();
+
+      for (var pair of formData.entries()) {
+        params.append(pair[0], pair[1]);
+      }
+
+      params.append("callback", "ml_webform_success_33805085");
+      params.append("_", new Date().getTime());
+
+      var script = document.createElement("script");
+      script.src = form.action + "?" + params.toString();
+      document.body.appendChild(script);
+    });
+  });
+</script>
