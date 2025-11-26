@@ -124,20 +124,6 @@ const { post } = Astro.props;
                     </div>
                   </div>
 
-                  <div
-                    class="ml-form-recaptcha ml-validate-required mt-6 mb-6 flex justify-center"
-                  >
-                    <script
-                      is:inline
-                      src="https://www.google.com/recaptcha/api.js"></script>
-                    <div
-                      class="g-recaptcha"
-                      data-sitekey="6Lf1KHQUAAAAAFNKEX1hdSWCS3mRMv4FlFaNslaD"
-                      data-theme="dark"
-                    >
-                    </div>
-                  </div>
-
                   <input type="hidden" name="ml-submit" value="1" />
 
                   <div class="ml-form-embedSubmit mt-6">
@@ -216,15 +202,12 @@ const { post } = Astro.props;
     var form = document.querySelector(".ml-subscribe-form-33805085 form");
     if (!form) return;
 
+    fetch(
+      "https://assets.mailerlite.com/jsonp/1943409/forms/172040872652702748/takel",
+    );
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-
-      // Validate reCAPTCHA
-      var recaptchaResponse = grecaptcha.getResponse();
-      if (!recaptchaResponse) {
-        alert("Please complete the reCAPTCHA verification.");
-        return;
-      }
 
       var submitBtn = form.querySelector('button[type="submit"]');
       var loadingBtn = form.querySelector("button.loading");
