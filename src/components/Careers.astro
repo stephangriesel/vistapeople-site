@@ -235,16 +235,110 @@ const { post } = Astro.props;
 </section>
 
 <script>
-    function ml_webform_success_33805085() {
-      const formRow = document.querySelector(".ml-subscribe-form-33805085 .row-form");
-      const successRow = document.querySelector(".ml-subscribe-form-33805085 .row-success");
-      const errorRow = document.querySelector(".ml-subscribe-form-33805085 .row-error");
-      
+  window.ml_custom_callback = function(data) {
+    const formContainer = document.querySelector(".ml-subscribe-form-33805085");
+    if (!formContainer) return;
+    
+    const formRow = formContainer.querySelector(".row-form");
+    const successRow = formContainer.querySelector(".row-success");
+    const errorRow = formContainer.querySelector(".row-error");
+    const submitBtn = formContainer.querySelector('button[type="submit"]');
+    const loadingBtn = formContainer.querySelector("button.loading");
+
+    if (data && data.success === false) {
+      console.error("MailerLite Error:", data);
+      if (formRow && errorRow) {
+        formRow.style.display = "none";
+        errorRow.style.display = "block";
+        const errorMsg = errorRow.querySelector(".ml-error-msg");
+        if (errorMsg) {
+            let errorText = "";
+            if (data.errors && data.errors.fields) {
+               Object.values(data.errors.fields).forEach(errArray => {
+                  errorText += errArray.join(" ") + " ";
+               });
+            }
+            errorMsg.textContent = errorText ? errorText : "Please check your details and try again.";
+        }
+      }
+      if (submitBtn) submitBtn.style.display = "block";
+      if (loadingBtn) loadingBtn.style.display = "none";
+    } else {
       if (formRow && successRow) {
         formRow.style.display = "none";
         successRow.style.display = "block";
         if (errorRow) errorRow.style.display = "none";
       }
     }
+    
+    // Clean up script tag
+    const existingScript = document.getElementById('ml_jsonp_script');
+    if (existingScript) existingScript.remove();
+  };
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector(".ml-subscribe-form-33805085 form");
+    if (!form) return;
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const loadingBtn = form.querySelector("button.loading");
+
+      if (submitBtn) submitBtn.style.display = "none";
+      if (loadingBtn) loadingBtn.style.display = "block";
+
+      const formData = new FormData(form);
+      const params = new URLSearchParams();
+      
+      for (const pair of formData.entries()) {
+        params.append(pair[0], pair[1]);
+      }
+      
+      params.append("callback", "window.ml_custom_callback");
+      params.append("_", new Date().getTime());
+
+      // MailerLite's backend server strictly blocks testing from localhost domains,
+      // resolving in a 403 HTML page that triggers a browser ORB block or ERR_ABORTED. 
+      // To test the UI seamlessly, we simulate a successful JSONP call locally.
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+          console.warn("Localhost detected: Simulating MailerLite JSONP response to avoid security blocks.");
+          setTimeout(() => {
+              window.ml_custom_callback({ success: true });
+          }, 800);
+          return;
+      }
+
+      const script = document.createElement("script");
+      script.id = 'ml_jsonp_script';
+      script.src = form.action + "?" + params.toString();
+      
+      script.onerror = function() {
+          const formContainer = document.querySelector(".ml-subscribe-form-33805085");
+          const errorRow = formContainer.querySelector(".row-error");
+          const formRow = formContainer.querySelector(".row-form");
+          const errorMsg = errorRow.querySelector(".ml-error-msg");
+          
+          if (formRow && errorRow) {
+            formRow.style.display = "none";
+            errorRow.style.display = "block";
+            const isLocal = window.location.hostname === 'localhost';
+            
+            if (errorMsg) {
+              if (isLocal) {
+                  errorMsg.textContent = "Local testing blocked by MailerLite's server. Please test on live domain.";
+              } else {
+                  errorMsg.textContent = "Network error. Please try again or verify your adblocker allows it.";
+              }
+            }
+          }
+          if (submitBtn) submitBtn.style.display = "block";
+          if (loadingBtn) loadingBtn.style.display = "none";
+          script.remove();
+      };
+
+      document.body.appendChild(script);
+    });
+  });
 </script>
-<script is:inline src="https://groot.mailerlite.com/js/w/webforms.min.js?v2" type="text/javascript"></script>
