@@ -194,6 +194,25 @@ const { post } = Astro.props;
                   </p>
                 </div>
               </div>
+              
+              <div
+                class="ml-form-errorBody row-error"
+                style="display: none"
+              >
+                <div class="ml-form-errorContent text-center">
+                  <h4 class="mb-4 text-2xl font-bold text-red-500">
+                    Oops! Something went wrong.
+                  </h4>
+
+                  <p class="text-base text-body-color dark:text-dark-6 ml-error-msg">
+                    Please try again later.
+                  </p>
+                  
+                  <button type="button" class="mt-6 inline-block font-bold py-2 px-4 rounded bg-gray-200 text-dark hover:bg-gray-300 dark:bg-dark-3 dark:text-white dark:hover:bg-dark-4 transition-colors" onclick="document.querySelector('.row-error').style.display='none'; document.querySelector('.row-form').style.display='block';">
+                    Try Again
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -215,81 +234,17 @@ const { post } = Astro.props;
   </div>
 </section>
 
-<script is:inline>
-  function ml_webform_success_33805085(data) {
-    // Debugging: Log the response data
-    console.log("MailerLite Response:", data);
-
-    var formContainer = document.querySelector(".ml-subscribe-form-33805085");
-    if (!formContainer) return;
-
-    var formRow = formContainer.querySelector(".row-form");
-    var successRow = formContainer.querySelector(".row-success");
-    var form = formContainer.querySelector("form");
-    var submitBtn = form.querySelector('button[type="submit"]');
-    var loadingBtn = form.querySelector("button.loading");
-
-    // Check if the submission had errors
-    if (data && data.success === false) {
-      // Handle error
-      console.error("MailerLite Submission Error:", data);
-      alert(
-        "Something went wrong. Please check your details and try again.\n" +
-          (data && data.errors ? JSON.stringify(data.errors) : ""),
-      );
-
-      // Reset buttons
-      if (submitBtn) submitBtn.style.display = "block";
-      if (loadingBtn) loadingBtn.style.display = "none";
-    } else {
+<script>
+    function ml_webform_success_33805085() {
+      const formRow = document.querySelector(".ml-subscribe-form-33805085 .row-form");
+      const successRow = document.querySelector(".ml-subscribe-form-33805085 .row-success");
+      const errorRow = document.querySelector(".ml-subscribe-form-33805085 .row-error");
+      
       if (formRow && successRow) {
         formRow.style.display = "none";
         successRow.style.display = "block";
+        if (errorRow) errorRow.style.display = "none";
       }
     }
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    var form = document.querySelector(".ml-subscribe-form-33805085 form");
-    if (!form) return;
-
-    // Fetch the 'takel' endpoint as per the new snippet
-    fetch(
-      "https://assets.mailerlite.com/jsonp/1943409/forms/172040872652702748/takel",
-    );
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      var submitBtn = form.querySelector('button[type="submit"]');
-      var loadingBtn = form.querySelector("button.loading");
-
-      if (submitBtn) submitBtn.style.display = "none";
-      if (loadingBtn) loadingBtn.style.display = "block";
-
-      var formData = new FormData(form);
-      fetch(form.action, {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json'
-        },
-        body: formData
-      })
-      .then(function(response) {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(function(data) {
-        ml_webform_success_33805085(data);
-      })
-      .catch(function(error) {
-        console.error('Error:', error);
-        alert("Something went wrong. Please try again later.");
-        if (submitBtn) submitBtn.style.display = "block";
-        if (loadingBtn) loadingBtn.style.display = "none";
-      });
-    });
-  });
 </script>
+<script is:inline src="https://groot.mailerlite.com/js/w/webforms.min.js?v2" type="text/javascript"></script>
