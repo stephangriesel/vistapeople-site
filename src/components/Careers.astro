@@ -229,13 +229,8 @@ const { post } = Astro.props;
     var submitBtn = form.querySelector('button[type="submit"]');
     var loadingBtn = form.querySelector("button.loading");
 
-    // Check if the submission was successful
-    if (data && data.success) {
-      if (formRow && successRow) {
-        formRow.style.display = "none";
-        successRow.style.display = "block";
-      }
-    } else {
+    // Check if the submission had errors
+    if (data && data.success === false) {
       // Handle error
       console.error("MailerLite Submission Error:", data);
       alert(
@@ -246,6 +241,11 @@ const { post } = Astro.props;
       // Reset buttons
       if (submitBtn) submitBtn.style.display = "block";
       if (loadingBtn) loadingBtn.style.display = "none";
+    } else {
+      if (formRow && successRow) {
+        formRow.style.display = "none";
+        successRow.style.display = "block";
+      }
     }
   }
 
@@ -268,25 +268,28 @@ const { post } = Astro.props;
       if (loadingBtn) loadingBtn.style.display = "block";
 
       var formData = new FormData(form);
-      var params = new URLSearchParams();
-
-      for (var pair of formData.entries()) {
-        params.append(pair[0], pair[1]);
-      }
-
-      params.append("callback", "ml_webform_success_33805085");
-      params.append("_", new Date().getTime());
-
-      var script = document.createElement("script");
-      script.src = form.action + "?" + params.toString();
-
-      script.onerror = function () {
+      fetch(form.action, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json'
+        },
+        body: formData
+      })
+      .then(function(response) {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(function(data) {
+        ml_webform_success_33805085(data);
+      })
+      .catch(function(error) {
+        console.error('Error:', error);
         alert("Something went wrong. Please try again later.");
         if (submitBtn) submitBtn.style.display = "block";
         if (loadingBtn) loadingBtn.style.display = "none";
-      };
-
-      document.body.appendChild(script);
+      });
     });
   });
 </script>
