@@ -194,25 +194,6 @@ const { post } = Astro.props;
                   </p>
                 </div>
               </div>
-              
-              <div
-                class="ml-form-errorBody row-error"
-                style="display: none"
-              >
-                <div class="ml-form-errorContent text-center">
-                  <h4 class="mb-4 text-2xl font-bold text-red-500">
-                    Oops! Something went wrong.
-                  </h4>
-
-                  <p class="text-base text-body-color dark:text-dark-6 ml-error-msg">
-                    Please try again later.
-                  </p>
-                  
-                  <button type="button" class="mt-6 inline-block font-bold py-2 px-4 rounded bg-gray-200 text-dark hover:bg-gray-300 dark:bg-dark-3 dark:text-white dark:hover:bg-dark-4 transition-colors" onclick="document.querySelector('.row-error').style.display='none'; document.querySelector('.row-form').style.display='block';">
-                    Try Again
-                  </button>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -234,111 +215,23 @@ const { post } = Astro.props;
   </div>
 </section>
 
-<script>
-  window.ml_custom_callback = function(data) {
-    const formContainer = document.querySelector(".ml-subscribe-form-33805085");
-    if (!formContainer) return;
-    
-    const formRow = formContainer.querySelector(".row-form");
-    const successRow = formContainer.querySelector(".row-success");
-    const errorRow = formContainer.querySelector(".row-error");
-    const submitBtn = formContainer.querySelector('button[type="submit"]');
-    const loadingBtn = formContainer.querySelector("button.loading");
+<script is:inline>
+    // MailerLite Universal
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '1943409');
+</script>
 
-    if (data && data.success === false) {
-      console.error("MailerLite Error:", data);
-      if (formRow && errorRow) {
-        formRow.style.display = "none";
-        errorRow.style.display = "block";
-        const errorMsg = errorRow.querySelector(".ml-error-msg");
-        if (errorMsg) {
-            let errorText = "";
-            if (data.errors && data.errors.fields) {
-               Object.values(data.errors.fields).forEach(errArray => {
-                  errorText += errArray.join(" ") + " ";
-               });
-            }
-            errorMsg.textContent = errorText ? errorText : "Please check your details and try again.";
-        }
-      }
-      if (submitBtn) submitBtn.style.display = "block";
-      if (loadingBtn) loadingBtn.style.display = "none";
-    } else {
-      if (formRow && successRow) {
-        formRow.style.display = "none";
-        successRow.style.display = "block";
-        if (errorRow) errorRow.style.display = "none";
-      }
+<script is:inline>
+    function ml_webform_success_33805085() {
+      var $ = ml_jQuery || jQuery;
+      $('.ml-subscribe-form-33805085 .row-success').show();
+      $('.ml-subscribe-form-33805085 .row-form').hide();
     }
-    
-    // Clean up script tag
-    const existingScript = document.getElementById('ml_jsonp_script');
-    if (existingScript) existingScript.remove();
-  };
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector(".ml-subscribe-form-33805085 form");
-    if (!form) return;
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const submitBtn = form.querySelector('button[type="submit"]');
-      const loadingBtn = form.querySelector("button.loading");
-
-      if (submitBtn) submitBtn.style.display = "none";
-      if (loadingBtn) loadingBtn.style.display = "block";
-
-      const formData = new FormData(form);
-      const params = new URLSearchParams();
-      
-      for (const pair of formData.entries()) {
-        params.append(pair[0], pair[1]);
-      }
-      
-      params.append("callback", "window.ml_custom_callback");
-      params.append("_", new Date().getTime());
-
-      // MailerLite's backend server strictly blocks testing from localhost domains,
-      // resolving in a 403 HTML page that triggers a browser ORB block or ERR_ABORTED. 
-      // To test the UI seamlessly, we simulate a successful JSONP call locally.
-      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-          console.warn("Localhost detected: Simulating MailerLite JSONP response to avoid security blocks.");
-          setTimeout(() => {
-              window.ml_custom_callback({ success: true });
-          }, 800);
-          return;
-      }
-
-      const script = document.createElement("script");
-      script.id = 'ml_jsonp_script';
-      script.src = form.action + "?" + params.toString();
-      
-      script.onerror = function() {
-          const formContainer = document.querySelector(".ml-subscribe-form-33805085");
-          const errorRow = formContainer.querySelector(".row-error");
-          const formRow = formContainer.querySelector(".row-form");
-          const errorMsg = errorRow.querySelector(".ml-error-msg");
-          
-          if (formRow && errorRow) {
-            formRow.style.display = "none";
-            errorRow.style.display = "block";
-            const isLocal = window.location.hostname === 'localhost';
-            
-            if (errorMsg) {
-              if (isLocal) {
-                  errorMsg.textContent = "Local testing blocked by MailerLite's server. Please test on live domain.";
-              } else {
-                  errorMsg.textContent = "Network error. Please try again or verify your adblocker allows it.";
-              }
-            }
-          }
-          if (submitBtn) submitBtn.style.display = "block";
-          if (loadingBtn) loadingBtn.style.display = "none";
-          script.remove();
-      };
-
-      document.body.appendChild(script);
-    });
-  });
+</script>
+<script is:inline src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024" type="text/javascript"></script>
+<script is:inline>
+    fetch("https://assets.mailerlite.com/jsonp/1943409/forms/172040872652702748/takel");
 </script>
