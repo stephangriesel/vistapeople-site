@@ -20,6 +20,8 @@ const themeSwitcherColorClass = isHome
   : "text-black dark:text-white hover:text-primary";
 
 const hamburgerColorClass = isHome ? "bg-white" : "bg-dark dark:bg-white";
+
+const logoColorClass = isHome ? "text-white" : "text-black dark:text-white";
 ---
 
 <header
@@ -33,10 +35,10 @@ const hamburgerColorClass = isHome ? "bg-white" : "bg-dark dark:bg-white";
             href="/"
             class="navbar-logo flex items-center whitespace-nowrap w-full"
           >
-            <span class="header-logo text-white roboto-bold-900 text-4xl"
+            <span class={`header-logo roboto-bold-900 text-4xl ${logoColorClass}`}
               >Vista</span
             >
-            <span class="fira-sans-text text-white text-4xl">People</span>
+            <span class={`fira-sans-text text-4xl ${logoColorClass}`}>People</span>
           </a>
         </div>
       </div>

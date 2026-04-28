@@ -1,0 +1,136 @@
+---
+export interface Props {
+  post: any;
+}
+
+const { post } = Astro.props;
+---
+
+<div class="wow fadeInUp relative mb-12 overflow-hidden rounded-[5px] bg-white dark:bg-dark-2 border border-gray-200 dark:border-dark-3 p-6 sm:p-8 text-center shadow-[0px_8px_40px_0px_rgba(0,0,0,0.08)] dark:shadow-none" data-wow-delay=".1s">
+  <h3 class="mb-2 text-2xl font-bold text-dark dark:text-white">
+    {post.frontmatter.title}
+  </h3>
+  <p class="mb-6 text-sm text-body-color dark:text-dark-6">
+    {post.frontmatter.description2}
+  </p>
+
+  <style>
+    .ml-form-embedSubmitLoad {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+    }
+    .ml-form-embedSubmitLoad:after {
+      content: " ";
+      display: block;
+      width: 11px;
+      height: 11px;
+      margin: 1px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      border-color: #ffffff #ffffff #ffffff transparent;
+      animation: ml-form-embedSubmitLoad 1.2s linear infinite;
+    }
+    @keyframes ml-form-embedSubmitLoad {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+
+  <div id="mlb2-33805085" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-33805085">
+    <div class="ml-form-align-center text-left">
+      <div class="ml-form-embedWrapper embedForm">
+        <div class="ml-form-embedBody ml-form-embedBodyDefault row-form">
+          <form
+            class="ml-block-form"
+            action="https://assets.mailerlite.com/jsonp/1943409/forms/172040872652702748/subscribe"
+            data-code=""
+            method="post"
+            target="_blank"
+          >
+            <div class="ml-form-formContent space-y-4">
+              <div class="ml-form-fieldRow">
+                <div class="ml-field-group ml-field-name ml-validate-required">
+                  <input
+                    aria-label="name" aria-required="true" type="text"
+                    class="w-full p-3 rounded-md bg-gray-50 dark:bg-dark-3 border border-stroke dark:border-dark-4 focus:border-primary focus:outline-none transition-colors text-sm"
+                    name="fields[name]" placeholder="Full Name" autocomplete="given-name" required
+                  />
+                </div>
+              </div>
+              <div class="ml-form-fieldRow">
+                <div class="ml-field-group ml-field-email ml-validate-email ml-validate-required">
+                  <input
+                    aria-label="email" aria-required="true" type="email"
+                    class="w-full p-3 rounded-md bg-gray-50 dark:bg-dark-3 border border-stroke dark:border-dark-4 focus:border-primary focus:outline-none transition-colors text-sm"
+                    name="fields[email]" placeholder="Email" autocomplete="email" required
+                  />
+                </div>
+              </div>
+              <div class="ml-form-fieldRow ml-last-item">
+                <div class="ml-field-group ml-field-role_type ml-validate-required">
+                  <select
+                    aria-label="role_type" aria-required="true"
+                    class="w-full p-3 rounded-md bg-gray-50 dark:bg-dark-3 border border-stroke dark:border-dark-4 focus:border-primary focus:outline-none transition-colors text-body-color dark:text-dark-6 text-sm"
+                    name="fields[role_type]" required
+                  >
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="Permanent roles">Permanent roles</option>
+                    <option value="Interim roles">Interim roles</option>
+                    <option value="I would like to hear about all options">Hear about all options</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <input type="hidden" name="ml-submit" value="1" />
+
+            <div class="ml-form-embedSubmit mt-5">
+              <button
+                type="submit"
+                class="w-full font-bold py-3 px-4 rounded-md bg-primary text-white hover:bg-opacity-90 transition-colors text-sm shadow-submit"
+              >
+                Subscribe
+              </button>
+              <button disabled="disabled" style="display: none;" type="button" class="loading w-full font-bold py-3 px-4 rounded-md bg-primary text-white text-sm shadow-submit">
+                <div class="ml-form-embedSubmitLoad"></div>
+                <span class="sr-only">Loading...</span>
+              </button>
+            </div>
+            <input type="hidden" name="anticsrf" value="true" />
+          </form>
+        </div>
+
+        <div class="ml-form-successBody row-success" style="display: none">
+          <div class="ml-form-successContent text-center border border-primary bg-primary/5 rounded-md p-6">
+            <h4 class="mb-2 text-xl font-bold text-dark dark:text-white">Thank you!</h4>
+            <p class="text-sm text-body-color dark:text-dark-6">You have successfully joined our list.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+    // MailerLite Universal
+    if(!window['ml']){
+      (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+      .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+      n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+      (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+      ml('account', '1943409');
+    }
+</script>
+
+<script is:inline>
+    function ml_webform_success_33805085() {
+      var $ = ml_jQuery || jQuery;
+      $('.ml-subscribe-form-33805085 .row-success').show();
+      $('.ml-subscribe-form-33805085 .row-form').hide();
+    }
+</script>
+<script is:inline src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024" type="text/javascript"></script>
+<script is:inline>
+    fetch("https://assets.mailerlite.com/jsonp/1943409/forms/172040872652702748/takel");
+</script>

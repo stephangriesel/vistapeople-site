@@ -1,7 +1,9 @@
 ---
 import { getCollection } from "astro:content";
-import Newsletterbox from '../../components/Newsletterbox.astro';
+import { Image } from "astro:assets";
+import CareersSidebar from '../../components/CareersSidebar.astro';
 import PopularArticles from '../../components/PopularArticles.astro';
+import PasswordProtect from "../../components/PasswordProtect.astro";
 import Layout from "../../layouts/Layout.astro";
 import RelatedArticles from "../../components/RelatedArticles.astro";
 
@@ -14,12 +16,20 @@ export async function getStaticPaths() {
   }));
 }
 
-// Get the entry directly from the prop on render
 const { entry } = Astro.props;
 const { Content } = await entry.render();
+
+let allCareers = await Astro.glob("../content/careers/*.md");
+allCareers = allCareers.sort(
+  (a, b) =>
+    new Date(b.frontmatter.publishDate).valueOf() -
+    new Date(a.frontmatter.publishDate).valueOf(),
+);
+const careersPost = allCareers[0];
 ---
 
-<Layout title={entry.data.title} description={entry.data.postDetails.paraOne} image={entry.data.bigImg.src}>
+<Layout title={entry.data.title} description={entry.data.postDetails.paraOne} image={entry.data.image.src}>
+  {import.meta.env.PUBLIC_REQUIRE_BLOG_PASSWORD === 'true' && <PasswordProtect />}
   <!-- ====== Blog Details Section Start -->
   <section class="pt-20 pb-10 lg:pt-[120px] lg:pb-20 dark:bg-dark">
     <div class="container">
@@ -29,10 +39,12 @@ const { Content } = await entry.render();
             class="wow fadeInUp relative z-20 mb-[50px] h-[300px] overflow-hidden rounded-[5px] md:h-[400px] lg:h-[500px]"
             data-wow-delay=".1s"
           >
-            <img
-              src={entry.data.bigImg.src}
-              alt={entry.data.bigImg.alt}
+            <Image
+              src={entry.data.image.src}
+              alt={entry.data.image.alt}
               class="h-full w-full object-cover object-center"
+              width={1920}
+              height={500}
             />
             <div
               class="absolute top-0 left-0 z-10 flex h-full w-full items-end bg-gradient-to-t from-dark-700 to-transparent"
@@ -40,10 +52,12 @@ const { Content } = await entry.render();
               <div class="flex flex-wrap items-center p-4 pb-4 sm:px-8">
                 <div class="mb-4 mr-5 flex items-center md:mr-10">
                   <div class="mr-4 h-10 w-10 overflow-hidden rounded-full">
-                    <img
+                    <Image
                       src={entry.data.authorImg.src}
                       alt={entry.data.authorImg.alt}
                       class="w-full"
+                      width={40}
+                      height={40}
                     />
                   </div>
                   <p class="text-base font-medium text-white">
@@ -70,34 +84,7 @@ const { Content } = await entry.render();
                     {entry.data.publishDate.toDateString()}
                   </p>
 
-                  <p
-                    class="mr-5 flex items-center text-sm font-medium text-white md:mr-6"
-                  >
-                    <span class="mr-3">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"
-                        class="fill-current">
-                        <path
-                          d="M11.1002 4.875H4.6502C4.3502 4.875 4.0752 5.125 4.0752 5.45C4.0752 5.775 4.3252 6.025 4.6502 6.025H11.1252C11.4252 6.025 11.7002 5.775 11.7002 5.45C11.7002 5.125 11.4252 4.875 11.1002 4.875Z" />
-                        <path
-                          d="M9.8002 7.92505H4.6502C4.3502 7.92505 4.0752 8.17505 4.0752 8.50005C4.0752 8.82505 4.3252 9.07505 4.6502 9.07505H9.8002C10.1002 9.07505 10.3752 8.82505 10.3752 8.50005C10.3752 8.17505 10.1002 7.92505 9.8002 7.92505Z" />
-                        <path
-                          d="M13.9998 1.9751H1.9998C1.1498 1.9751 0.424805 2.6751 0.424805 3.5501V12.9751C0.424805 13.3751 0.649805 13.7501 1.0248 13.9251C1.1748 14.0001 1.3248 14.0251 1.4748 14.0251C1.7248 14.0251 1.9498 13.9501 2.1498 13.7751L4.2748 12.0251H13.9998C14.8498 12.0251 15.5748 11.3251 15.5748 10.4501V3.5501C15.5748 2.6751 14.8498 1.9751 13.9998 1.9751ZM14.4498 10.4501C14.4498 10.7001 14.2498 10.9001 13.9998 10.9001H4.0748C3.9498 10.9001 3.8248 10.9501 3.7248 11.0251L1.5748 12.8001V3.5501C1.5748 3.3001 1.7748 3.1001 2.0248 3.1001H14.0248C14.2748 3.1001 14.4748 3.3001 14.4748 3.5501V10.4501H14.4498Z" />
-                      </svg>
-                    </span>
-                    {entry.data.comments}
-                  </p>
-                  <p class="flex items-center text-sm font-medium text-white">
-                    <span class="mr-3">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"
-                        class="fill-current">
-                        <path
-                          d="M7.9998 5.92505C6.8498 5.92505 5.9248 6.85005 5.9248 8.00005C5.9248 9.15005 6.8498 10.075 7.9998 10.075C9.1498 10.075 10.0748 9.15005 10.0748 8.00005C10.0748 6.85005 9.1498 5.92505 7.9998 5.92505ZM7.9998 8.95005C7.4748 8.95005 7.0498 8.52505 7.0498 8.00005C7.0498 7.47505 7.4748 7.05005 7.9998 7.05005C8.5248 7.05005 8.9498 7.47505 8.9498 8.00005C8.9498 8.52505 8.5248 8.95005 7.9998 8.95005Z" />
-                        <path
-                          d="M15.3 7.1251C13.875 5.0001 11.9 2.8501 8 2.8501C4.1 2.8501 2.125 5.0001 0.7 7.1251C0.35 7.6501 0.35 8.3501 0.7 8.8751C2.125 10.9751 4.1 13.1501 8 13.1501C11.9 13.1501 13.875 10.9751 15.3 8.8751C15.65 8.3251 15.65 7.6501 15.3 7.1251ZM14.375 8.2501C12.55 10.9251 10.725 12.0251 8 12.0251C5.275 12.0251 3.45 10.9251 1.625 8.2501C1.525 8.1001 1.525 7.9001 1.625 7.7501C3.45 5.0751 5.275 3.9751 8 3.9751C10.725 3.9751 12.55 5.0751 14.375 7.7501C14.45 7.9001 14.45 8.1001 14.375 8.2501Z" />
-                      </svg>
-                    </span>
-                    {entry.data.views}
-                  </p>
+
                 </div>
               </div>
             </div>
@@ -236,7 +223,7 @@ const { Content } = await entry.render();
                         Share This Post
                       </span>
                       <div class="flex items-center gap-[10px]">
-                        <a href="javascript:void(0)">
+                        <a href="#" id="share-fb" target="_blank" rel="noopener noreferrer">
                           <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -247,18 +234,18 @@ const { Content } = await entry.render();
                               fill="white" />
                           </svg>
                         </a>
-                        <a href="javascript:void(0)">
+                        <a href="#" id="share-x" target="_blank" rel="noopener noreferrer">
                           <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
                               d="M16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16C0 24.8366 7.16344 32 16 32Z"
-                              fill="#55ACEE" />
+                              fill="#000000" />
                             <path
-                              d="M24.2945 11.375C24.4059 11.2451 24.2607 11.0755 24.0958 11.1362C23.728 11.2719 23.3918 11.3614 22.8947 11.4166C23.5062 11.0761 23.7906 10.5895 24.0219 9.99339C24.0777 9.84961 23.9094 9.71915 23.7645 9.78783C23.1759 10.0669 22.5408 10.274 21.873 10.3963C21.2129 9.7421 20.272 9.33331 19.2312 9.33331C17.2325 9.33331 15.6117 10.8406 15.6117 12.6993C15.6117 12.9632 15.6441 13.2202 15.7051 13.4663C12.832 13.3324 10.2702 12.1034 8.49031 10.2188C8.36832 10.0897 8.14696 10.1068 8.071 10.2643C7.86837 10.6846 7.7554 11.1509 7.7554 11.6418C7.7554 12.8093 8.39417 13.8395 9.36518 14.4431C8.92981 14.4301 8.51344 14.3452 8.12974 14.2013C7.94292 14.1312 7.72877 14.2543 7.75387 14.4427C7.94657 15.8893 9.11775 17.0827 10.6295 17.3647C10.3259 17.442 10.0061 17.483 9.67537 17.483C9.59517 17.483 9.51567 17.4805 9.43688 17.4756C9.23641 17.4632 9.07347 17.6426 9.15942 17.8141C9.72652 18.946 10.951 19.7361 12.376 19.7607C11.1374 20.6637 9.57687 21.2017 7.88109 21.2017C7.672 21.2017 7.5823 21.4706 7.7678 21.5617C9.20049 22.266 10.832 22.6666 12.5656 22.6666C19.2231 22.6666 22.8631 17.5377 22.8631 13.0896C22.8631 12.944 22.8594 12.7984 22.8528 12.6542C23.3932 12.2911 23.8789 11.8595 24.2945 11.375Z"
+                              d="M18.822 13.58L23.738 8H22.573L18.312 12.836L14.908 8H10.982L16.136 15.346L11 21.155H12.164L16.657 16.037L20.25 21.155H24.175L18.82 13.58H18.822ZM17.25 15.36L16.73 14.629L12.592 8.813H14.385L17.72 13.498L18.242 14.229L22.574 20.373H20.781L17.25 15.361V15.36Z"
                               fill="white" />
                           </svg>
                         </a>
-                        <a href="javascript:void(0)">
+                        <a href="#" id="share-in" target="_blank" rel="noopener noreferrer">
                           <svg width="32" height="32" viewBox="0 0 32 32" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -277,19 +264,10 @@ const { Content } = await entry.render();
             </div>
             <div class="w-full px-4 lg:w-4/12">
               <div>
-                <Newsletterbox />
+                <CareersSidebar post={careersPost} />
                 <PopularArticles />
 
-                <div
-                  class="wow fadeInUp mb-12 overflow-hidden rounded-[5px]"
-                  data-wow-delay=".1s"
-                >
-                  <img
-                    src="/assets/blog/bannder-ad.png"
-                    alt="image"
-                    class="w-full"
-                  />
-                </div>
+
               </div>
             </div>
           </div>
@@ -300,4 +278,20 @@ const { Content } = await entry.render();
     </div>
   </section>
   <!-- ====== Blog Details Section End -->
+
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      const url = encodeURIComponent(window.location.href);
+      const title = encodeURIComponent(document.title);
+      
+      const shareFb = document.getElementById("share-fb");
+      if (shareFb) shareFb.href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+      
+      const shareX = document.getElementById("share-x");
+      if (shareX) shareX.href = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+      
+      const shareIn = document.getElementById("share-in");
+      if (shareIn) shareIn.href = `https://www.linkedin.com/sharing/share-offsite/?url=${url}`;
+    });
+  </script>
 </Layout>

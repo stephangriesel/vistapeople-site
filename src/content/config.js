@@ -8,26 +8,25 @@ import { z, defineCollection } from 'astro:content';
 // Your existing blog collection
 const blogCollection = defineCollection({
   type: 'content',
-  schema: z.object({
+  schema: ({ image }) => z.object({
     draft: z.boolean(),
     title: z.string(),
     snippet: z.string(),
     image: z.object({
-      src: z.string(),
+      src: image(),
       alt: z.string(),
     }),
     bigImg: z.object({
-      src: z.string(),
+      src: image(),
       alt: z.string(),
     }),
     authorImg: z.object({
-      src: z.string(),
+      src: image(),
       alt: z.string(),
     }),
-    publishDate: z.string().transform((str) => new Date(str)),
+    publishDate: z.coerce.date(),
     author: z.string().default('Pimjolabs'),
-    comments: z.string(),
-    views: z.string(),
+
     category: z.string(),
     tags: z.array(z.string()),
     postDetails: z.object({

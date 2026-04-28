@@ -1,6 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
+import PasswordProtect from "../../components/PasswordProtect.astro";
+import Layout from "../../layouts/Layout.astro";
 
 // Filter blog entries with 'draft: false' & date before current date
 const publishedBlogEntries = await getCollection("blog", ({ data }) => {
@@ -13,30 +15,36 @@ publishedBlogEntries.sort(function (a, b) {
 });
 ---
 
-<div>
-  <div class="-mx-4 flex flex-wrap">
-    <div class="wow fadeInUp mt-14 w-full px-4" data-wow-delay=".2s">
-      <h2
-        class="relative pb-5 text-2xl font-semibold text-dark dark:text-white sm:text-[36px]"
-      >
-        Related Articles
-      </h2>
-      <span class="mb-10 inline-block h-[2px] w-20 bg-primary"></span>
-    </div>
-  </div>
+<Layout description="Our latest blog posts" title="Blog | VistaPeople">
+  {import.meta.env.PUBLIC_REQUIRE_BLOG_PASSWORD === 'true' && <PasswordProtect />}
+  <section class="pt-20 pb-10 lg:pt-[120px] lg:pb-20 bg-white dark:bg-dark">
+    <div class="container">
+      <div class="flex flex-wrap justify-center -mx-4">
+        <div class="w-full px-4">
+          <div class="mx-auto mb-[60px] text-center">
+            <span class="block mb-2 text-lg font-semibold text-primary">
+              Our Blogs
+            </span>
+            <h2 class="mb-4 text-3xl font-bold text-dark dark:text-white sm:text-4xl md:text-[40px] md:leading-[1.2]">
+              Latest News & Articles
+            </h2>
+            <p class="text-base text-body-color dark:text-dark-6">
+              Stay updated with our latest thoughts, insights, and news.
+            </p>
+          </div>
+        </div>
+      </div>
 
-  <ul class="-mx-4 flex flex-wrap">
-    {
-      publishedBlogEntries.map((blogPostEntry, index) => {
-        if(blogPostEntry.data.category === 'related') {
-          return (
+      <ul class="-mx-4 flex flex-wrap">
+        {
+          publishedBlogEntries.map((blogPostEntry, index) => (
             <li class="w-full px-4 md:w-1/2 lg:w-1/3">
               <a class="wow fadeInUp group block mb-10" data-wow-delay=".1s" href={`/blog/${blogPostEntry.slug}`}>
                 <div class="mb-8 overflow-hidden rounded-[5px]">
                   <span class="block">
                     <Image
                       src={blogPostEntry.data.image.src}
-                      alt={blogPostEntry.data.image.alt}
+                      alt={blogPostEntry.data.image.alt || ""}
                       class="w-full ease-in duration-300 group-hover:rotate-6 group-hover:scale-125"
                       width={370}
                       height={250}
@@ -51,20 +59,20 @@ publishedBlogEntries.sort(function (a, b) {
                   </span>
                   <h3>
                     <span
-                      class="inline-block mb-4 text-xl font-semibold text-dark dark:text-white hover:text-primary sm:text-2xl lg:text-xl xl:text-2xl"
+                      class="inline-block mb-4 text-xl font-semibold text-dark dark:text-white hover:text-primary dark:hover:text-primary sm:text-2xl lg:text-xl xl:text-2xl"
                     >
                       {blogPostEntry.data.title}
                     </span>
                   </h3>
                   <p class="max-w-[370px] text-base text-body-color dark:text-dark-6">
-                    {blogPostEntry.data.postDetails.paraOne.slice(0, 100)}
+                    {blogPostEntry.data.postDetails?.paraOne ? blogPostEntry.data.postDetails.paraOne.slice(0, 100) + '...' : (blogPostEntry.data.snippet || '')}
                   </p>
                 </div>
               </a>
             </li>
-          )
+          ))
         }
-      })
-    }
-  </ul>
-</div>
+      </ul>
+    </div>
+  </section>
+</Layout>
