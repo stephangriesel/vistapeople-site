@@ -5,7 +5,7 @@ import About from "../components/Aboutsection.astro";
 import AboutContinue from "../components/AboutsectionContinue.astro";
 import Features from "../components/Features.astro";
 import Hero from "../components/Hero.astro";
-import Careers from "../components/Careers.astro";
+import JobAlerts from "../components/JobAlerts.astro";
 // import Testimonials from '../components/Testimonials.astro';
 import Layout from "../layouts/Layout.astro";
 import Contact from "../components/Contactsection.astro";
@@ -43,8 +43,8 @@ allTestimonials = allTestimonials.sort(
     new Date(b.frontmatter.publishDate).valueOf() -
     new Date(a.frontmatter.publishDate).valueOf(),
 );
-let allCareers = await Astro.glob("./content/careers/*.md");
-allCareers = allCareers.sort(
+let allJobAlerts = await Astro.glob("./content/careers/*.md");
+allJobAlerts = allJobAlerts.sort(
   (a, b) =>
     new Date(b.frontmatter.publishDate).valueOf() -
     new Date(a.frontmatter.publishDate).valueOf(),
@@ -57,6 +57,6 @@ allCareers = allCareers.sort(
   <AboutContinue post={allAbout[0]} />
   <Features post={allServices[0]} />
   <CTA post={allCtaSection[0]} />
-  <Careers post={allCareers[0]} />
+  <JobAlerts post={allJobAlerts[0]} />
   <Contact />
 </Layout>

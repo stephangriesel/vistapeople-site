@@ -353,9 +353,9 @@ export default defineConfig({
             ],
           },
           {
-            name: "careers",
-            label: "Careers",
-            label_singular: "careers",
+            name: "job-alerts",
+            label: "Job Alerts",
+            label_singular: "job-alert",
             folder: "src/pages/content/careers",
             create: true,
             delete: true,
@@ -367,7 +367,7 @@ export default defineConfig({
                 widget: "string",
                 label: "Paragraph 1",
                 required: false,
-                default: "Our clients are mostly foreign companies across Europe, the UK and the USA, wanting to work with South African professionals, remotely."
+                default: "Our clients are foreign companies across Europe, the United Kingdom and the United States. Share your details below to become part of our network and be the first to know about available opportunities."
               },
               {
                 name: "description2",
@@ -388,6 +388,81 @@ export default defineConfig({
                 ],
               },
             ],
+          },
+          {
+            name: "blog",
+            label: "Blog",
+            label_singular: "Post",
+            folder: "src/content/blog",
+            create: true,
+            delete: true,
+            media_folder: "../../../src/assets/blog",
+            public_folder: "../../assets/blog",
+            fields: [
+              { name: "draft", widget: "boolean", label: "Draft", default: false },
+              { name: "title", widget: "string", label: "Post Title", required: true },
+              { name: "snippet", widget: "text", label: "Snippet", required: false },
+              {
+                name: "image",
+                widget: "object",
+                label: "Image",
+                required: false,
+                fields: [
+                  { name: "src", widget: "image", label: "Image Source", required: true },
+                  { name: "alt", widget: "string", label: "Alt Text", required: true }
+                ]
+              },
+              {
+                name: "bigImg",
+                widget: "object",
+                label: "Big Image (Hero)",
+                required: false,
+                fields: [
+                  { name: "src", widget: "image", label: "Image Source", required: true },
+                  { name: "alt", widget: "string", label: "Alt Text", required: true }
+                ]
+              },
+              {
+                name: "authorImg",
+                widget: "object",
+                label: "Author Image",
+                required: false,
+                fields: [
+                  { name: "src", widget: "image", label: "Image Source", required: true },
+                  { name: "alt", widget: "string", label: "Alt Text", required: true }
+                ]
+              },
+              { name: "publishDate", widget: "datetime", label: "Publish Date", required: true },
+              { name: "author", widget: "string", label: "Author", required: false, default: "Pimjolabs" },
+              { name: "category", widget: "string", label: "Category", required: false },
+              { name: "tags", widget: "list", label: "Tags", required: false },
+              {
+                name: "postDetails",
+                widget: "object",
+                label: "Post Details",
+                required: false,
+                fields: [
+                  { name: "paraOne", widget: "text", label: "Paragraph One", required: false },
+                  { name: "paraTwo", widget: "text", label: "Paragraph Two", required: false },
+                  { name: "title", widget: "string", label: "Subtitle 1", required: false },
+                  { name: "paraThree", widget: "text", label: "Paragraph Three", required: false },
+                  { name: "titleTwo", widget: "string", label: "Subtitle 2", required: false },
+                  { name: "paraFour", widget: "text", label: "Paragraph Four", required: false },
+                  { name: "paraFive", widget: "text", label: "Paragraph Five", required: false },
+                ]
+              },
+              {
+                name: "quotes",
+                widget: "object",
+                label: "Quotes Section",
+                required: false,
+                fields: [
+                  { name: "quote", widget: "text", label: "Quote", required: false },
+                  { name: "author", widget: "string", label: "Author", required: false }
+                ]
+              },
+              { name: "body", widget: "markdown", label: "Post Body", required: false }
+            ]
           },
         ],
       },
