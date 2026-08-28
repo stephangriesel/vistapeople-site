@@ -2,7 +2,6 @@
 import { getCollection } from "astro:content";
 import { marked } from "marked";
 import About from "../components/Aboutsection.astro";
-import AboutContinue from "../components/AboutsectionContinue.astro";
 import Features from "../components/Features.astro";
 import Hero from "../components/Hero.astro";
 import JobAlerts from "../components/JobAlerts.astro";
@@ -54,7 +53,6 @@ allJobAlerts = allJobAlerts.sort(
 <Layout description="Let's talk about growth" title="VistaPeople">
   <Hero post={allHero[0]} />
   <About post={allAbout[0]} />
-  <AboutContinue post={allAbout[0]} />
   <Features post={allServices[0]} />
   <CTA post={allCtaSection[0]} />
   <JobAlerts post={allJobAlerts[0]} />

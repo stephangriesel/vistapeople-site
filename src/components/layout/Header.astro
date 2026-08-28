@@ -22,10 +22,12 @@ const themeSwitcherColorClass = isHome
 const hamburgerColorClass = isHome ? "bg-white" : "bg-dark dark:bg-white";
 
 const logoColorClass = isHome ? "text-white" : "text-black dark:text-white";
+
+const headerBgClass = isHome ? "bg-dark" : "bg-transparent";
 ---
 
 <header
-  class="ud-header absolute top-0 left-0 z-40 flex w-full items-center bg-transparent"
+  class={`ud-header absolute top-0 left-0 z-40 flex w-full items-center ${headerBgClass}`}
 >
   <div class="container">
     <div class="relative -mx-4 flex items-center justify-between my-5">

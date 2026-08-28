@@ -4,80 +4,146 @@ export interface Props {
 }
 
 const { post } = Astro.props;
-console.log("hero component", post.frontmatter);
+
+const defaultFaces = [
+  "/assets/hero/faces/face-01.jpg",
+  "/assets/hero/faces/face-02.jpg",
+  "/assets/hero/faces/face-03.jpg",
+  "/assets/hero/faces/face-04.jpg",
+  "/assets/hero/faces/face-05.jpg",
+  "/assets/hero/faces/face-06.jpg",
+  "/assets/hero/faces/face-07.jpg",
+  "/assets/hero/faces/face-08.jpg",
+];
+
+const cmsFaces = (post.frontmatter?.faces ?? [])
+  .map((face) => face?.image)
+  .filter(Boolean);
+
+const faces = cmsFaces.length > 0 ? cmsFaces : defaultFaces;
+// Duplicated so the track can scroll a full loop (-50%) and wrap seamlessly.
+const marqueeFaces = [...faces, ...faces];
 ---
+
 <!-- Hero -->
-<section
-  id="home"
-  class="relative overflow-hidden pt-20 md:pt-24 lg:pt-32 h-screen"
->
-  <video
-    autoplay
-    loop
-    muted
-    poster={post.frontmatter.backgroundphoto}
-    class="absolute inset-0 -z-10 w-full h-full object-cover"
-  >
-    <source
-      src={post.frontmatter.backgroundvideo}
-      type="video/mp4"
-    /> Your browser does not support the video tag.
-  </video>
-  <div
-    class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center"
-  >
+<section id="home" class="relative overflow-hidden bg-white dark:bg-dark pt-32 pb-16 md:pt-36 lg:pt-44 lg:pb-24">
+  <div class="container">
     <div class="-mx-4 flex flex-wrap items-center">
       <div class="w-full px-4">
-        <div
-          class="hero-content wow fadeInUp mx-auto max-w-[780px] text-center"
-          data-wow-delay=".2s"
-        >
+        <div class="hero-content wow fadeInUp max-w-[700px]" data-wow-delay=".2s">
           {
             post.frontmatter && post.frontmatter.title ? (
-              <h1 class="mb-6 text-3xl font-bold leading-snug text-white sm:text-4xl sm:leading-snug lg:text-5xl lg:leading-[1.2] text-balance">
+              <h1 class="mb-6 text-4xl font-bold leading-tight text-dark dark:text-white sm:text-5xl sm:leading-tight lg:text-[56px] lg:leading-[1.15]">
                 {post.frontmatter.title}
               </h1>
             ) : null
           }
           {
             post.frontmatter && post.frontmatter.description ? (
-              <p class="mx-auto mb-9 max-w-[600px] font-medium text-base text-white sm:text-lg sm:leading-[1.44]">
+              <p class="mb-9 max-w-[600px] text-base font-medium text-body-color dark:text-dark-6 sm:text-lg sm:leading-[1.44]">
                 {post.frontmatter.description}
               </p>
             ) : null
           }
-          <ul class="mb-10 flex gap-5 flex-wrap items-center justify-center">
-            {
-              post.frontmatter &&
-              post.frontmatter.ctaleftlink &&
-              post.frontmatter.ctaleft ? (
-                <li>
+          {
+            post.frontmatter &&
+            (post.frontmatter.ctaleft || post.frontmatter.ctaright) ? (
+              <div class="mb-2 inline-flex flex-wrap overflow-hidden rounded-lg border border-stroke dark:border-dark-3">
+                {post.frontmatter.ctaleftlink && post.frontmatter.ctaleft ? (
                   <a
                     href={post.frontmatter.ctaleftlink}
-                    class="inline-flex items-center justify-center rounded-md bg-white py-[14px] px-7 text-center text-base font-medium text-dark shadow-1 transition duration-300 ease-in-out hover:text-body-color hover:bg-gray-2"
+                    class="inline-flex items-center justify-center bg-white py-[14px] px-7 text-center text-base font-medium text-dark transition duration-300 ease-in-out hover:bg-gray-2 dark:bg-white dark:hover:bg-gray-2"
                   >
                     {post.frontmatter.ctaleft}
                   </a>
-                </li>
-              ) : null
-            }
-            {
-              post.frontmatter &&
-              post.frontmatter.ctarightlink &&
-              post.frontmatter.ctaright ? (
-                <li>
+                ) : null}
+                {post.frontmatter.ctarightlink && post.frontmatter.ctaright ? (
                   <a
                     href={post.frontmatter.ctarightlink}
-                    class="flex items-center gap-4 py-[14px] rounded-md bg-white/[0.12] px-6 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-white hover:text-dark"
+                    class="inline-flex items-center justify-center bg-dark py-[14px] px-7 text-center text-base font-medium text-white transition duration-300 ease-in-out hover:bg-dark-2"
                   >
                     {post.frontmatter.ctaright}
                   </a>
-                </li>
-              ) : null
-            }
-          </ul>
+                ) : null}
+              </div>
+            ) : null
+          }
         </div>
       </div>
     </div>
   </div>
+
+  <div class="hero-marquee mt-16 lg:mt-20">
+    <div class="hero-marquee-track">
+      {
+        marqueeFaces.map((src) => (
+          <div class="hero-marquee-item">
+            <img src={src} alt="" loading="lazy" class="h-full w-full object-cover" />
+          </div>
+        ))
+      }
+    </div>
+  </div>
 </section>
+
+<style>
+  .hero-marquee {
+    width: 100%;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 10%,
+      black 90%,
+      transparent
+    );
+  }
+
+  .hero-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: hero-marquee-scroll 36s linear infinite;
+  }
+
+  .hero-marquee-item {
+    flex-shrink: 0;
+    width: 130px;
+    height: 170px;
+  }
+
+  @media (min-width: 640px) {
+    .hero-marquee-item {
+      width: 160px;
+      height: 210px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-marquee-item {
+      width: 190px;
+      height: 250px;
+    }
+  }
+
+  @keyframes hero-marquee-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-marquee-track {
+      animation: none;
+    }
+  }
+</style>

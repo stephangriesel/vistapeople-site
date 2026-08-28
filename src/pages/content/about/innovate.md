@@ -1,24 +1,24 @@
 ---
-title: Unlock Growth Through Innovation
-description1: At Vista People, we turn innovation into opportunity, helping your
-  business scale and thrive with smart, remote workforce solutions.
-description2: Whether you're hiring your first remote team member or expanding
-  to a team of 100, we specialize in building high-performing teams or placing
-  individual workers, based in South Africa. Our end-to-end support ensures you
-  have everything you need to grow with confidence.
-description3: By enabling remote teams or individual workers, we deliver an
-  innovative solution that improves your margins and drives increased
-  profitability.
-title2: Fast-Track Your Expansion
-description4: Vista People offers a seamless Employer of Record (EOR) solution
-  designed to simplify hiring and onboarding. From day one, we ensure full
-  compliance, so your team or individual worker, can hit the ground running.
-title3: Access World-Class Talent
-description5: "We empower businesses to access skilled, cost-effective
-  professionals in South Africa. Our team handles every detail, from legal and
-  HR to payroll and tax, so you can focus on what matters most: building your
-  vision."
-cta: "Let's talk "
+title: About us
+description1: Vista People was founded by South Africans now based in the
+  Netherlands, with years of professional experience working across Europe,
+  the United Kingdom, and the United States. Having built careers
+  internationally while staying closely connected to South Africa, we
+  understand both the opportunities and the challenges businesses face when
+  trying to access exceptional talent.
+description2: We are uniquely positioned to help because we have seen it from
+  both sides. The ambition and capability of South African professionals, and
+  the growing demand from international businesses for reliable,
+  high-quality talent.
+description3: Together with our team of South African recruiters,
+  accountants, and legal specialists, we understand the local landscape
+  deeply. From sourcing the right people to managing employment and
+  compliance, we make the process seamless so that you can focus on growing
+  your business with confidence.
+description4: At Vista People, we believe great partnerships are built on
+  service, trust, and long-term value. We genuinely want our clients to
+  succeed, and we are committed to helping you unlock the potential that the
+  right people can bring to your business.
 layout: ../../../layouts/General.astro
 ---
 About
