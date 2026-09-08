@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (window.pageYOffset > sticky) {
       ud_header.classList.add('sticky-header');
-      ud_header.classList.remove('absolute', 'bg-transparent', 'z-40');
+      ud_header.classList.remove('absolute', 'z-40');
     } else {
       ud_header.classList.remove('sticky-header');
-      ud_header.classList.add('absolute', 'bg-transparent', 'z-40');
+      ud_header.classList.add('absolute', 'z-40');
     }
 
     if(logo.length) {
